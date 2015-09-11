@@ -1,7 +1,6 @@
 package com.rsamadhan;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TextToSpeechActivity extends AppCompatActivity {
+public class SpeechToTextActivity extends AppCompatActivity {
 
 	private TextView txtSpeechInput;
 	private ImageButton btnSpeak;
@@ -22,7 +21,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_texttospeech);
+		setContentView(R.layout.activity_speechtotext);
 
 		txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
 		btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
@@ -44,7 +43,7 @@ public class TextToSpeechActivity extends AppCompatActivity {
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
 				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "hi-IN");
 		intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
 				getString(R.string.speech_prompt));
 		try {
