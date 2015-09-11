@@ -16,6 +16,7 @@
 
 package com.rsamadhan;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -96,13 +97,14 @@ public class DomainListFragment extends Fragment implements
                 Toast.makeText(getActivity(), "This language is not supported", Toast.LENGTH_LONG).show();
             } else {
                 isTTSSuccess = true;
-                speakOut();
+
+                //speakOut();
             }
         }
     }
 
+    @TargetApi(21)
     private void speakOut() {
-
         String text = "नीचे उल्लेख श्रेणी से चयन करें";
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
     }
