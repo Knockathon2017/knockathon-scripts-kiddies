@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">R Samadhan</string>
+  <string name="cheese_ipsum">Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement
+  Samadhan Problem Statement </string>
+    <string name="checkin">Samadhan Problem</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
+    <string name="tap_on_mic">Tap on mic to speak</string>
+
+    <string name="domain_text">Domains</string>
+    <array name="images">
+        <item>कृषि</item>
+        <item>पशुपालन</item>
+        <item>कला और संस्कृति</item>
+        <item>जैव प्रौद्योगिकी</item>
+        <item>जनगणना और सर्वेक्षण</item>
+        <item>व्यापार</item>
+        <item>रक्षा</item>
+        <item>अर्थव्यवस्था</item>
+        <item>शिक्षा</item>
+        <item>पर्यावरण एवं वन</item>
+        <item>वित्त</item>
+        <item>भोजन</item>
+        <item>विदेश मामले</item>
+        <item>शासन और प्रशासन</item>
+        <item>शासन और प्रशासन</item>
+        <item>गृह मंत्रालय और प्रवर्तन</item>
+        <item>आवास</item>
+        <item>इंडस्ट्रीज</item>
+        <item>सूचना एवं प्रसारण</item>
+        <item>सूचना और संचार</item>
+        <item>इन्फ्रास्ट्रक्चर</item>
+        <item>श्रम और रोजगार</item>
+        <item>खनिज</item>
+        <item>भारत की संसदa</item>
+        <item>बिजली और ऊर्जा</item>
+        <item>ग्रामीण</item>
+        <item>विज्ञान और प्रौद्योगिकी</item>
+        <item>सामाजिक विकास</item>
+        <item>आंकड़े</item>
+        <item>ट्रांसपोर्ट</item>
+        <item>यात्रा और पर्यटन</item>
+        <item>शहरी</item>
+        <item>पानी और सफ़ाई व्यवस्था</item>
+        <item>जल स्रोत</item>
+    </array>
+
+
+</resources>
