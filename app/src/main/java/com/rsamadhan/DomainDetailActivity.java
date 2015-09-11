@@ -16,26 +16,36 @@
 
 package com.rsamadhan;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.rsamadhan.speech.SpeechFragment;
 
 
-public class DomainDetailActivity extends AppCompatActivity {
+public class DomainDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
+
+    private FloatingActionButton mSpeakButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mSpeakButton= (FloatingActionButton) findViewById(R.id.floating_ac_btn);
+        mSpeakButton.setOnClickListener(this);
 
         Intent intent = getIntent();
         final String domainName = intent.getStringExtra(EXTRA_NAME);
@@ -61,5 +71,28 @@ public class DomainDetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.sample_actions, menu);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        switch (id){
+            case R.id.floating_ac_btn:
+                launchSpeakDialog();
+                break;
+        }
+    }
+
+    private void launchSpeakDialog() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        SpeechFragment newFragment = new SpeechFragment();
+        newFragment.show(ft, "dialog");
     }
 }
