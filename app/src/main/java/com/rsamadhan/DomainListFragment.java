@@ -19,6 +19,7 @@ package com.rsamadhan;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,14 +30,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
-public class DomainListFragment extends Fragment {
+public class DomainListFragment extends Fragment implements
+        TextToSpeech.OnInitListener{
+
+    private TextToSpeech tts;
+    private boolean isTTSSuccess;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(tts == null){
+            tts = new TextToSpeech(getActivity(),this);
+        }else{
+            if(isTTSSuccess){
+                speakOut();
+            }
+        }
+    }
 
     @Nullable
     @Override
@@ -49,7 +68,7 @@ public class DomainListFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),getResources().getStringArray(R.array.images)));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), getResources().getStringArray(R.array.images)));
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -59,6 +78,41 @@ public class DomainListFragment extends Fragment {
             list.add(array[random.nextInt(array.length)]);
         }
         return list;
+    }
+
+    /**
+     * Called to signal the completion of the TextToSpeech engine initialization.
+     *
+     * @param status {@link TextToSpeech#SUCCESS} or {@link TextToSpeech#ERROR}.
+     */
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            int result = tts.setLanguage(new Locale("hi", "IN"));
+            tts.setPitch(0.6f);
+            tts.setSpeechRate(0.5f);
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Toast.makeText(getActivity(), "This language is not supported", Toast.LENGTH_LONG).show();
+            } else {
+                isTTSSuccess = true;
+                speakOut();
+            }
+        }
+    }
+
+    private void speakOut() {
+
+        String text = "नीचे उल्लेख श्रेणी से चयन करें";
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(tts != null){
+            tts.shutdown();
+        }
     }
 
     public static class SimpleStringRecyclerViewAdapter
