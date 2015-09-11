@@ -36,21 +36,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CheeseListFragment extends Fragment {
+public class DomainListFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView rv = (RecyclerView) inflater.inflate(
-                R.layout.fragment_cheese_list, container, false);
+                R.layout.fragment_domain_list, container, false);
         setupRecyclerView(rv);
         return rv;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),
-                getRandomSublist(Cheeses.sCheeseStrings, 30)));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(),getResources().getStringArray(R.array.images)));
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -67,10 +66,11 @@ public class CheeseListFragment extends Fragment {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mValues;
+        private String mValues[];
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
+            public int mBoundIndex;
 
             public final View mView;
             public final ImageView mImageView;
@@ -90,10 +90,10 @@ public class CheeseListFragment extends Fragment {
         }
 
         public String getValueAt(int position) {
-            return mValues.get(position);
+            return mValues[position];
         }
 
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
+        public SimpleStringRecyclerViewAdapter(Context context, String items[]) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mBackground = mTypedValue.resourceId;
             mValues = items;
@@ -108,30 +108,31 @@ public class CheeseListFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mBoundString = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.mBoundString = mValues[position];
+            holder.mBoundIndex=position;
+            holder.mTextView.setText(mValues[position]);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, CheeseDetailActivity.class);
-                    intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
-
+                    Intent intent = new Intent(context, DomainDetailActivity.class);
+                    intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
+                    intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
                     context.startActivity(intent);
                 }
             });
 
             Glide.with(holder.mImageView.getContext())
-                    .load(Cheeses.getRandomCheeseDrawable())
+                    .load(Domains.getDomainImage(position))
                     .fitCenter()
                     .into(holder.mImageView);
         }
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return mValues.length;
         }
     }
 }

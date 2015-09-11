@@ -27,9 +27,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 
-public class CheeseDetailActivity extends AppCompatActivity {
+public class DomainDetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "cheese_name";
+    public static final String EXTRA_NAME = "domain_name";
+    public static final String EXTRA_INDEX = "domain_index";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,8 @@ public class CheeseDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent intent = getIntent();
-        final String cheeseName = intent.getStringExtra(EXTRA_NAME);
+        final String domainName = intent.getStringExtra(EXTRA_NAME);
+        final int cheeseIndex= intent.getIntExtra(EXTRA_INDEX, 0);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,14 +47,14 @@ public class CheeseDetailActivity extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(cheeseName);
+        collapsingToolbar.setTitle(domainName);
 
-        loadBackdrop();
+        loadBackdrop(cheeseIndex);
     }
 
-    private void loadBackdrop() {
+    private void loadBackdrop(int index) {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(Cheeses.getRandomCheeseDrawable()).centerCrop().into(imageView);
+        Glide.with(this).load(Domains.getDomainImage(index)).centerCrop().into(imageView);
     }
 
     @Override
