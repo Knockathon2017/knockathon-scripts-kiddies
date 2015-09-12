@@ -73,6 +73,11 @@
             android:configChanges="locale" >
         </activity>
 
+        <activity
+            android:name=".statistics.BarActivity"
+            android:configChanges="locale" >
+        </activity>
+
     </application>
 
 </manifest>

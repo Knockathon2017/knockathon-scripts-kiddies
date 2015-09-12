@@ -41,7 +41,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.rsamadhan.common.PreferenceManager;
-import com.rsamadhan.statistics.StatActiviy;
+import com.rsamadhan.statistics.BarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,7 +176,8 @@ public class MainActivity extends AppCompatActivity {
                         if (menuItem.getItemId() == R.id.nav_change_lan) {
                             navigateToLanguageChange();
                         } else if (menuItem.getItemId() == R.id.nav_stats) {
-                            navigateToStats();
+                            Intent intent = new Intent(MainActivity.this, BarActivity.class);
+                            startActivity(intent);
                         }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
@@ -185,11 +186,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void navigateToStats() {
-        Intent intent=new Intent(this, StatActiviy.class);
-        startActivity(intent);
-
-    }
 
     static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragments = new ArrayList<>();
