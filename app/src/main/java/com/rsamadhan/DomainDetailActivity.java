@@ -37,11 +37,11 @@ import com.rsamadhan.speech.SpeechFragment;
 import org.w3c.dom.Text;
 
 
-public class DomainDetailActivity extends AppCompatActivity {/*implements View.OnClickListener {
+public class DomainDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
-
+/*implements View.OnClickListener {
     private FloatingActionButton mSpeakButton;
 
     private CardView mCardView1,mCardView2,mCardView3;
