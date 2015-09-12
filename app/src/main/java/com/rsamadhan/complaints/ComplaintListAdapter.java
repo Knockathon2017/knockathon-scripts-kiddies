@@ -67,13 +67,6 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
 
         public TextView cardDetails;
         public TextView cardHead;
-<<<<<<< HEAD
-
-        public CarViewHolder(View itemView) {
-            super(itemView);
-            cardDetails = (TextView) itemView.findViewById(R.id.tv_cv_detail);
-            cardHead = (TextView) itemView.findViewById(R.id.tv_cv_head);
-=======
         public ImageView action;
         public ImageView comment;
 
@@ -84,7 +77,6 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
             cardHead= (TextView) itemView.findViewById(R.id.tv_cv_head);
             action= (ImageView) itemView.findViewById(R.id.action);
             comment= (ImageView) itemView.findViewById(R.id.comment);
->>>>>>> added services for activities
         }
     }
 
@@ -110,17 +102,10 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         });
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
         carViewHolder.cardDetails.setText(mComplainList.get(position).getActivity_description());
-<<<<<<< HEAD
-        if (mComplainList.get(position).getStatus().equals("Close")) {
-            carViewHolder.cardDetails.setTextColor(Color.RED);
-        } else if (mComplainList.get(position).getStatus().equals("Open")) {
-            carViewHolder.cardDetails.setTextColor(Color.GREEN);
-=======
         if(mComplainList.get(position).getStatus().equals("Close")){
             carViewHolder.cardDetails.setTextColor(Color.GRAY);
         }else{
             carViewHolder.cardDetails.setTextColor(Color.DKGRAY);
->>>>>>> added services for activities
         }
         carViewHolder.action.setOnClickListener(new View.OnClickListener() {
             @Override
