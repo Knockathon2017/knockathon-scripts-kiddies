@@ -24,29 +24,30 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     private List<Results> mComplainList;
     private Context mContext;
 
-    public ComplaintListAdapter(List<Results> complainList,Context context){
-        if(complainList==null){
-            mComplainList=new ArrayList<>();
-        }else{
-            mComplainList =complainList;
+    public ComplaintListAdapter(List<Results> complainList, Context context) {
+        if (complainList == null) {
+            mComplainList = new ArrayList<>();
+        } else {
+            mComplainList = complainList;
         }
-        mContext=context;
+        mContext = context;
     }
 
     public void updateList(ArrayList<Results> results) {
-        if(results!=null){
-            mComplainList=results;
+        if (results != null) {
+            mComplainList = results;
         }
     }
 
-    public class CarViewHolder extends RecyclerView.ViewHolder{
+    public class CarViewHolder extends RecyclerView.ViewHolder {
 
         public TextView cardDetails;
         public TextView cardHead;
+
         public CarViewHolder(View itemView) {
             super(itemView);
-            cardDetails= (TextView) itemView.findViewById(R.id.tv_cv_detail);
-            cardHead= (TextView) itemView.findViewById(R.id.tv_cv_head);
+            cardDetails = (TextView) itemView.findViewById(R.id.tv_cv_detail);
+            cardHead = (TextView) itemView.findViewById(R.id.tv_cv_head);
         }
     }
 
@@ -54,16 +55,16 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view= inflater.inflate(R.layout.complaint_row, parent,false);
-        CarViewHolder holder=new CarViewHolder(view);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.complaint_row, parent, false);
+        CarViewHolder holder = new CarViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        final CarViewHolder carViewHolder= (CarViewHolder) holder;
+        final CarViewHolder carViewHolder = (CarViewHolder) holder;
         carViewHolder.cardDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,16 +73,17 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         });
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
         carViewHolder.cardDetails.setText(mComplainList.get(position).getActivity_description());
-        if(mComplainList.get(position).getStatus().equals("Close")){
+        if (mComplainList.get(position).getStatus().equals("Close")) {
             carViewHolder.cardDetails.setTextColor(Color.RED);
-        }else{
+        } else if (mComplainList.get(position).getStatus().equals("Open")) {
             carViewHolder.cardDetails.setTextColor(Color.GREEN);
         }
 
     }
+
     private void launchCommentsPage(String v) {
 
-        Intent intent=new Intent(mContext, CommentsActivity.class);
+        Intent intent = new Intent(mContext, CommentsActivity.class);
         intent.putExtra(CommentsActivity.COMMENT_HEAD, v);
         mContext.startActivity(intent);
     }
