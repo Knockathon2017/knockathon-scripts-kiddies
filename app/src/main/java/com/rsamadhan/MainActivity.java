@@ -20,11 +20,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -38,6 +38,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,9 +79,20 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                try {
+                    String uri = "tel:+919911490791";
+                    Intent dialIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+
+                    startActivity(dialIntent);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "Your call has failed...",
+                            Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
             }
+
         });
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -98,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
         // Better solution would be to display a dialog and suggesting to
         // go to the settings
         if (!enabled) {
-          showGPSDialog();
+            showGPSDialog();
         }
     }
 
     private void showGPSDialog() {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage(R.string.enable_gps).setPositiveButton(R.string.yes_txt, new DialogInterface.OnClickListener() {
             @Override
@@ -139,10 +151,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateToLanguageChange() {
-        PreferenceManager pref=PreferenceManager.getInstance(this);
+        PreferenceManager pref = PreferenceManager.getInstance(this);
         pref.putFirstTimeLogin(true);
-        Intent intent=new Intent(this,LanguageSelectionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent intent = new Intent(this, LanguageSelectionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
@@ -158,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        if(menuItem.getItemId()==R.id.nav_change_lan){
-                                navigateToLanguageChange();
+                        if (menuItem.getItemId() == R.id.nav_change_lan) {
+                            navigateToLanguageChange();
                         }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
