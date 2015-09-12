@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.rsamadhan.R;
 
@@ -17,12 +18,16 @@ public class CommentsActivity extends AppCompatActivity {
 
     private RecyclerView mCommentsListView;
     private CommentsListAdapter mRecyclerListAdapter;
+    private TextView mCommentsHeadView;
+    public static final String COMMENT_HEAD="Comment_Head";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comment_layout);
         mCommentsListView= (RecyclerView) findViewById(R.id.lv_comments_list);
+        mCommentsHeadView= (TextView) findViewById(R.id.tv_comment_head);
+        mCommentsHeadView.setText(getIntent().getStringExtra(COMMENT_HEAD));
     }
 
     @Override

@@ -66,6 +66,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_cv_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Info"
@@ -94,6 +95,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_cv_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Friends"
@@ -122,6 +124,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_cv_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Related"

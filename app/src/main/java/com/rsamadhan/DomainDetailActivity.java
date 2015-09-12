@@ -28,10 +28,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.rsamadhan.comments.CommentsActivity;
 import com.rsamadhan.speech.SpeechFragment;
+
+import org.w3c.dom.Text;
 
 
 public class DomainDetailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +45,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     private FloatingActionButton mSpeakButton;
 
     private CardView mCardView1,mCardView2,mCardView3;
+    private TextView mTextView1,mTextView2,mTextView3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,10 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         mCardView1= (CardView) findViewById(R.id.cv_details1);
         mCardView2= (CardView) findViewById(R.id.cv_details2);
         mCardView3= (CardView) findViewById(R.id.cv_details3);
+
+        mTextView1= (TextView) findViewById(R.id.tv_cv_1);
+        mTextView2= (TextView) findViewById(R.id.tv_cv_2);
+        mTextView3=   (TextView) findViewById(R.id.tv_cv_3);
 
         mCardView1.setOnClickListener(this);
         mCardView2.setOnClickListener(this);
@@ -92,13 +100,22 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
             case R.id.floating_ac_btn:
                 launchSpeakDialog();
                 break;
-            default:
-                launchCommentsPage(v);
+            case R.id.cv_details1:
+                launchCommentsPage(mTextView1.getText().toString());
+                break;
+            case R.id.cv_details2:
+                launchCommentsPage(mTextView2.getText().toString());
+                break;
+            case R.id.cv_details3:
+                launchCommentsPage(mTextView3.getText().toString());
+                break;
         }
     }
 
-    private void launchCommentsPage(View v) {
+    private void launchCommentsPage(String v) {
+
         Intent intent=new Intent(this, CommentsActivity.class);
+        intent.putExtra(CommentsActivity.COMMENT_HEAD,v);
         startActivity(intent);
     }
 
