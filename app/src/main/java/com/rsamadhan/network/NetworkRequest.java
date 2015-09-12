@@ -1,6 +1,7 @@
 package com.rsamadhan.network;
 
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
+import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
@@ -62,6 +63,7 @@ public class NetworkRequest {
                                     ComplaintCallback callback);
 
         @GET("/AllWorkkardActivities/{UserId}/{MobileNumber}/{Domain}")
-        public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain);
+        public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain,
+                                        ComplaintListCallback callback);
     }
 }

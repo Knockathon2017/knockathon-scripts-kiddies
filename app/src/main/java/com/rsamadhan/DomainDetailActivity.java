@@ -18,12 +18,15 @@ package com.rsamadhan;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -32,9 +35,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.rsamadhan.comments.CommentsActivity;
+import com.rsamadhan.network.ComplaintListAdapter;
+import com.rsamadhan.network.ComplaintListData;
+import com.rsamadhan.network.NetworkApi;
+import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
 import com.rsamadhan.speech.SpeechFragment;
 
 import org.w3c.dom.Text;
+
+import retrofit.RetrofitError;
 
 
 public class DomainDetailActivity extends AppCompatActivity {
@@ -44,25 +53,20 @@ public class DomainDetailActivity extends AppCompatActivity {
 /*implements View.OnClickListener {
     private FloatingActionButton mSpeakButton;
 
-    private CardView mCardView1,mCardView2,mCardView3;
-    private TextView mTextView1,mTextView2,mTextView3;
+    private String mCrimeDomain="crime";
+    private String mAdminDomain="admin";
+    private String mEducation="edu";
 
+    private RecyclerView mRecyclerView;
+
+    private RecyclerView.LayoutManager mLayoutManager;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        mCardView1= (CardView) findViewById(R.id.cv_details1);
-        mCardView2= (CardView) findViewById(R.id.cv_details2);
-        mCardView3= (CardView) findViewById(R.id.cv_details3);
-
-        mTextView1= (TextView) findViewById(R.id.tv_cv_1);
-        mTextView2= (TextView) findViewById(R.id.tv_cv_2);
-        mTextView3=   (TextView) findViewById(R.id.tv_cv_3);
-
-        mCardView1.setOnClickListener(this);
-        mCardView2.setOnClickListener(this);
-        mCardView3.setOnClickListener(this);
+        mRecyclerView= (RecyclerView) findViewById(R.id.rv_complaint_list);
+        mLayoutManager=new LinearLayoutManager(this);
 
         mSpeakButton= (FloatingActionButton) findViewById(R.id.floating_ac_btn);
         mSpeakButton.setOnClickListener(this);
@@ -80,6 +84,41 @@ public class DomainDetailActivity extends AppCompatActivity {
         collapsingToolbar.setTitle(domainName);
 
         loadBackdrop(cheeseIndex);
+
+        String domVal=mEducation;
+        if(domainName.contains(mCrimeDomain)){
+                  domVal=mCrimeDomain;
+        }else if(domainName.contains(mAdminDomain)){
+
+            domVal=mAdminDomain;
+        }else if(domainName.contains(mEducation)){
+            domVal=mEducation;
+        }
+        lanuchComplaintListService(domVal);
+    }
+
+    private void lanuchComplaintListService(String domVal) {
+        NetworkApi api=new NetworkApi();
+        final Context context=this;
+        api.getComplaintList(new ComplaintListCallback() {
+            @Override
+            public void complaintListSuccess(ComplaintListData complaintListData) {
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                ComplaintListAdapter adapter= new ComplaintListAdapter(complaintListData.getResults(),context);
+                mRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void complaintListError(RetrofitError error) {
+
+            }
+        },"2302432",PreferenceManager.getInstance(this).getLoginId(),domVal);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     private void loadBackdrop(int index) {
@@ -101,24 +140,9 @@ public class DomainDetailActivity extends AppCompatActivity {
             case R.id.floating_ac_btn:
                 launchSpeakDialog();
                 break;
-            case R.id.cv_details1:
-                launchCommentsPage(mTextView1.getText().toString());
-                break;
-            case R.id.cv_details2:
-                launchCommentsPage(mTextView2.getText().toString());
-                break;
-            case R.id.cv_details3:
-                launchCommentsPage(mTextView3.getText().toString());
-                break;
         }
     }
 
-    private void launchCommentsPage(String v) {
-
-        Intent intent=new Intent(this, CommentsActivity.class);
-        intent.putExtra(CommentsActivity.COMMENT_HEAD,v);
-        startActivity(intent);
-    }
 
     private void launchSpeakDialog() {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
