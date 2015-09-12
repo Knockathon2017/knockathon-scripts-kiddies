@@ -2,6 +2,7 @@ package com.rsamadhan.network;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,6 +61,11 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         });
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
         carViewHolder.cardDetails.setText(mComplainList.get(position).getActivity_description());
+        if(mComplainList.get(position).getStatus().equals("Close")){
+            carViewHolder.cardDetails.setTextColor(Color.RED);
+        }else{
+            carViewHolder.cardDetails.setTextColor(Color.GREEN);
+        }
 
     }
     private void launchCommentsPage(String v) {

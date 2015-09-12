@@ -4,10 +4,12 @@ package com.rsamadhan.network;
  * Created by Prathmesh on 12-09-2015.
  */
 public class Results {
+
     String activity_id;
     String activity_title;
     String activity_description;
     String created_date;
+    private String status;
 
     public String getCreated_date() {
         return created_date;
@@ -39,5 +41,12 @@ public class Results {
 
     public void setActivity_id(String activity_id) {
         this.activity_id = activity_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
