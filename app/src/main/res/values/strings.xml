@@ -57,5 +57,7 @@
         <item>Water Resource</item>
     </array>
 
-
+    <string name="enable_gps">This application needs to access your location. Please switch on your gps.</string>
+    <string name="yes_txt">Enable GPS</string>
+    <string name="no_txt">Cancel</string>
 </resources>

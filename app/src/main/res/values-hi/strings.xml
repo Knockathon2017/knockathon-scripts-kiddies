@@ -48,6 +48,7 @@
         <item>पानी और सफ़ाई व्यवस्था</item>
         <item>जल स्रोत</item>
     </array>
-
-
+    <string name="enable_gps">इस एप्लिकेशन को आपके स्थान का उपयोग करने की जरूरत है। अपने जीपीएस पर स्विच करें।</string>
+    <string name="yes_txt">जीपीएस सक्षम करें</string>
+    <string name="no_txt">रद्द करें</string>
 </resources>

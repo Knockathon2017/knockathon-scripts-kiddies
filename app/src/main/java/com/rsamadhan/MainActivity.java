@@ -16,8 +16,12 @@
 
 package com.rsamadhan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -81,6 +85,40 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        boolean enabled = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        // check if enabled and if not send user to the GSP settings
+        // Better solution would be to display a dialog and suggesting to
+        // go to the settings
+        if (!enabled) {
+          showGPSDialog();
+        }
+    }
+
+    private void showGPSDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        builder.setMessage(R.string.enable_gps).setPositiveButton(R.string.yes_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        }).setNegativeButton(R.string.no_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        }).setCancelable(false);
+
+        builder.create().show();
     }
 
     @Override
@@ -112,8 +150,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new DomainListFragment(), getResources().getString(R.string.domain_text));
-       /* adapter.addFragment(new DomainListFragment(), "Category 2");
-        adapter.addFragment(new DomainListFragment(), "Category 3");*/
         viewPager.setAdapter(adapter);
     }
 
