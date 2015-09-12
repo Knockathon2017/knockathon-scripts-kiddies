@@ -17,7 +17,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
+        <!--<item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_dashboard"
             android:title="Home" />
@@ -32,7 +32,7 @@
         <item
             android:id="@+id/nav_discussion"
             android:icon="@drawable/ic_forum"
-            android:title="Discussion" />
+            android:title="Discussion" />-->
 
         <item
             android:id="@+id/nav_change_lan"
@@ -41,7 +41,7 @@
 
     </group>
 
-    <item android:title="Sub items">
+    <!--<item android:title="Sub items">
         <menu>
             <item
                 android:icon="@drawable/ic_dashboard"
@@ -50,6 +50,6 @@
                 android:icon="@drawable/ic_forum"
                 android:title="Sub item 2" />
         </menu>
-    </item>
+    </item>-->
 
 </menu>

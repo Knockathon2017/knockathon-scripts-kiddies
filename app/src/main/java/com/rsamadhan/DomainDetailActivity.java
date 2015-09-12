@@ -96,6 +96,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int id=v.getId();
+
         switch (id){
             case R.id.floating_ac_btn:
                 launchSpeakDialog();
