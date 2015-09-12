@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">R Samadhan</string>
-  <string name="cheese_ipsum">Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement Samadhan Problem Statement
-  Samadhan Problem Statement </string>
-    <string name="checkin">Samadhan Problem</string>
-    <string name="menu_settings">Settings</string>
+    <string name="select_below_txt">नीचे उल्लेख श्रेणी से चयन करें</string>
+    <string name="speech_prompt">कुछ कहें&#8230;</string>
+    <string name="speech_not_supported">क्षमा करें! आपकी डिवाइसी समर्थन भाषण इनपुट नहीं करता</string>
+    <string name="tap_on_mic">बात करने के लिए माइक पर टैप करें</string>
+    <string name="domain_text">डोमेन</string>
+    <string name="lan_select_text">भाषा चुनिए</string>
+    <array name="languages">
+        <item>English language</item>
+        <item>हिंदी भाषा</item>
+    </array>
 
-    <string name="speech_prompt">Say something&#8230;</string>
-    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
-    <string name="tap_on_mic">Tap on mic to speak</string>
-
-    <string name="domain_text">Domains</string>
     <array name="images">
         <item>कृषि</item>
         <item>पशुपालन</item>

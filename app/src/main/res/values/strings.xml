@@ -12,6 +12,14 @@
     <string name="tap_on_mic">Tap on mic to speak</string>
 
     <string name="domain_text">Domains</string>
+    <string name="select_below_txt">Select from the range mentioned below</string>
+
+    <string name="lan_select_text">Select Language</string>
+    <array name="languages">
+        <item>English language</item>
+        <item>हिंदी भाषा</item>
+    </array>
+
     <array name="images">
         <item>Agriculture</item>
         <item>Animal Husbandry</item>

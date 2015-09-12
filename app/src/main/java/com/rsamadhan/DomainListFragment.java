@@ -19,6 +19,7 @@ package com.rsamadhan;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.rsamadhan.common.ApplicationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,24 +91,26 @@ public class DomainListFragment extends Fragment implements
     @Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
-            int result = tts.setLanguage(new Locale("hi", "IN"));
+            int result = tts.setLanguage(ApplicationUtils.getSelectedLocale(PreferenceManager.getInstance(getActivity())));
             tts.setPitch(0.6f);
             tts.setSpeechRate(0.5f);
             if (result == TextToSpeech.LANG_MISSING_DATA
                     || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Toast.makeText(getActivity(), "This language is not supported", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.speech_not_supported), Toast.LENGTH_LONG).show();
             } else {
                 isTTSSuccess = true;
 
-                //speakOut();
+                speakOut();
             }
         }
     }
 
     @TargetApi(21)
     private void speakOut() {
-        String text = "नीचे उल्लेख श्रेणी से चयन करें";
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        if(Build.VERSION.SDK_INT>=21){
+            String text = getString(R.string.select_below_txt);
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        }
     }
 
     @Override

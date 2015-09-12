@@ -16,9 +16,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rsamadhan.PreferenceManager;
 import com.rsamadhan.R;
+import com.rsamadhan.common.ApplicationUtils;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by prathmeshs on 12-09-2015.
@@ -70,10 +73,17 @@ public class SpeechFragment extends DialogFragment {
      * Showing google speech input dialog
      * */
     private void promptSpeechInput() {
+        Locale selectedLocale =ApplicationUtils.getSelectedLocale(PreferenceManager.getInstance(getActivity()));
+        String localeSelected;
+        if(selectedLocale.getLanguage().equals("hi")){
+                localeSelected="hi-IN";
+        }else{
+            localeSelected=selectedLocale.getLanguage()+"-"+selectedLocale.getCountry();
+        }
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "hi-IN");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,localeSelected);
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
                 getString(R.string.speech_prompt));
         try {

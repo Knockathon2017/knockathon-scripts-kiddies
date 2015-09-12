@@ -31,7 +31,7 @@ public class PreferenceManager {
         mPref.edit().putBoolean(PREF_FIRST_TIME_LOGIN,firstLogin).commit();
     }
     public boolean getLoginFirstTime(){
-        return mPref.getBoolean(PREF_FIRST_TIME_LOGIN,false);
+        return mPref.getBoolean(PREF_FIRST_TIME_LOGIN,true);
     }
     public void putSelectedLanguage(String language){
         mPref.edit().putString(PREF_LANGUAGE_SELECTED,language).commit();

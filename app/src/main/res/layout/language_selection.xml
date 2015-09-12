@@ -9,4 +9,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/numberPicker"
         android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/btn_select_lan"
+        android:text="@string/lan_select_text"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"/>
 </LinearLayout>
