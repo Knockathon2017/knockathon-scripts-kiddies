@@ -40,11 +40,10 @@ import com.rsamadhan.hospitals.HospitalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 public class DomainListFragment extends Fragment implements
-        TextToSpeech.OnInitListener{
+        TextToSpeech.OnInitListener {
 
     private TextToSpeech tts;
     private boolean isTTSSuccess;
@@ -52,10 +51,10 @@ public class DomainListFragment extends Fragment implements
     @Override
     public void onResume() {
         super.onResume();
-        if(tts == null){
-            tts = new TextToSpeech(getActivity(),this);
-        }else{
-            if(isTTSSuccess){
+        if (tts == null) {
+            tts = new TextToSpeech(getActivity(), this);
+        } else {
+            if (isTTSSuccess) {
                 speakOut();
             }
         }
@@ -108,7 +107,7 @@ public class DomainListFragment extends Fragment implements
 
     @TargetApi(21)
     private void speakOut() {
-        if(Build.VERSION.SDK_INT>=21){
+        if (Build.VERSION.SDK_INT >= 21) {
             String text = getString(R.string.select_below_txt);
             tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
         }
@@ -117,7 +116,7 @@ public class DomainListFragment extends Fragment implements
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(tts != null){
+        if (tts != null) {
             tts.shutdown();
         }
     }
@@ -171,22 +170,22 @@ public class DomainListFragment extends Fragment implements
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mBoundString = mValues[position];
-            holder.mBoundIndex=position;
+            holder.mBoundIndex = position;
             holder.mTextView.setText(mValues[position]);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    if(holder.mBoundIndex == 15){
+                    if (holder.mBoundIndex == 14) {
                         Intent intent = new Intent(context, HospitalActivity.class);
-                       /* intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
-                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);*/
+                        intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
+//                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
                         context.startActivity(intent);
-                    }else{
+                    } else {
                         Intent intent = new Intent(context, DomainDetailActivity.class);
                         intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
-                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
+                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX, holder.mBoundIndex);
                         context.startActivity(intent);
                     }
                 }

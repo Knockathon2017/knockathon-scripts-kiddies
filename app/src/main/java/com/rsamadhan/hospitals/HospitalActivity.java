@@ -1,9 +1,12 @@
 package com.rsamadhan.hospitals;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rsamadhan.R;
@@ -20,15 +23,29 @@ public class HospitalActivity extends AppCompatActivity {
     private RecyclerView mCommentsListView;
     private CommentsListAdapter mRecyclerListAdapter;
     private TextView mCommentsHeadView;
-    public static final String COMMENT_HEAD="Comment_Head";
+    public static final String EXTRA_NAME = "domain_name";
+    public static final String EXTRA_INDEX = "domain_index";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.comment_layout);
+        setContentView(R.layout.hospital_layout);
+
+
+        Intent intent = getIntent();
+        final String domainName = intent.getStringExtra(EXTRA_NAME);
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.tb_comments);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /*CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(domainName);*/
+
         mCommentsListView= (RecyclerView) findViewById(R.id.lv_comments_list);
         mCommentsHeadView= (TextView) findViewById(R.id.tv_comment_head);
-        mCommentsHeadView.setText(getIntent().getStringExtra(COMMENT_HEAD));
+        mCommentsHeadView.setText(getIntent().getStringExtra(domainName));
     }
 
     @Override
