@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.rsamadhan.common.ApplicationUtils;
+import com.rsamadhan.hospitals.HospitalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -177,10 +178,17 @@ public class DomainListFragment extends Fragment implements
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DomainDetailActivity.class);
-                    intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
-                    intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
-                    context.startActivity(intent);
+                    if(holder.mBoundIndex == 15){
+                        Intent intent = new Intent(context, HospitalActivity.class);
+                       /* intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
+                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);*/
+                        context.startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(context, DomainDetailActivity.class);
+                        intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
+                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
+                        context.startActivity(intent);
+                    }
                 }
             });
 
