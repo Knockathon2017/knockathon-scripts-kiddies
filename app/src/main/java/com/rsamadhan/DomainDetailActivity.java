@@ -37,7 +37,7 @@ import com.rsamadhan.speech.SpeechFragment;
 import org.w3c.dom.Text;
 
 
-public class DomainDetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class DomainDetailActivity extends AppCompatActivity {/*implements View.OnClickListener {
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
@@ -131,5 +131,5 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         // Create and show the dialog.
         SpeechFragment newFragment = new SpeechFragment();
         newFragment.show(ft, "dialog");
-    }
+    }*/
 }
