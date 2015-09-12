@@ -43,6 +43,9 @@
         <activity android:name=".MainActivity"
             android:configChanges="locale">
         </activity>
+        <activity android:name=".comments.CommentsActivity"
+            android:configChanges="locale">
+        </activity>
 
         <activity android:name=".DomainDetailActivity"
             android:configChanges="locale"

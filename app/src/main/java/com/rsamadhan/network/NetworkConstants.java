@@ -6,9 +6,7 @@ package com.rsamadhan.network;
 public class NetworkConstants {
 
     //TODO: To remove the mock URL
-    public static String BASE_URL="http://demo3990520.mockable.io";
-
-    public static String DEVICE_ID="deviceId";
+    public static String BASE_URL="http://www.starshipadhish.com";
 
     public interface ResponseCodes{
         int OK_SUCCESS=200;

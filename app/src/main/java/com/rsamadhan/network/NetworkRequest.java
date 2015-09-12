@@ -35,5 +35,8 @@ public class NetworkRequest {
        /* @Multipart
         @PUT("/user/photo")
         Call<User> updateUser(@Part("file") RequestBody photo, @Part("description") RequestBody description);*/
+
+
+
     }
 }
