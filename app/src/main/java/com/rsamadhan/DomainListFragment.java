@@ -179,7 +179,7 @@ public class DomainListFragment extends Fragment implements
                     Context context = v.getContext();
                     if (holder.mBoundIndex == 14) {
                         Intent intent = new Intent(context, HospitalActivity.class);
-                        intent.putExtra(DomainDetailActivity.EXTRA_NAME, holder.mBoundString);
+                        intent.putExtra(HospitalActivity.EXTRA_NAME, holder.mBoundString);
 //                        intent.putExtra(DomainDetailActivity.EXTRA_INDEX,holder.mBoundIndex);
                         context.startActivity(intent);
                     } else {
