@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="cc_web_aaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="cc_web_aaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityType Name="UserComplaint">
     <Key>
       <PropertyRef Name="Id" />
@@ -17,6 +17,7 @@
     <Property Name="WorkkardId" Type="Int64" Nullable="false" />
     <Property Name="ActivityId" Type="Int64" Nullable="false" />
     <Property Name="creatorId" Type="Int64" Nullable="false" />
+    <Property Name="IsActivityClosedByOwner" Type="Boolean" />
   </EntityType>
   <EntityContainer Name="cc_web_aaEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="UserComplaints" EntityType="Self.UserComplaint" />

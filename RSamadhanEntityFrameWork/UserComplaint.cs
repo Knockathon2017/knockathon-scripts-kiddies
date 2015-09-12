@@ -27,5 +27,6 @@ namespace RSamadhanEntityFrameWork
         public long WorkkardId { get; set; }
         public long ActivityId { get; set; }
         public long creatorId { get; set; }
+        public Nullable<bool> IsActivityClosedByOwner { get; set; }
     }
 }

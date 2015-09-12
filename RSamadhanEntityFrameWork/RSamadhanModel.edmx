@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="UserComplaints">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,6 +22,7 @@
           <Property Name="WorkkardId" Type="bigint" Nullable="false" />
           <Property Name="ActivityId" Type="bigint" Nullable="false" />
           <Property Name="creatorId" Type="bigint" Nullable="false" />
+          <Property Name="IsActivityClosedByOwner" Type="bit" />
         </EntityType>
         <EntityContainer Name="cc_web_aaModelStoreContainer">
           <EntitySet Name="UserComplaints" EntityType="Self.UserComplaints" Schema="aagarwal" store:Type="Tables" />
@@ -29,7 +30,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="cc_web_aaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="cc_web_aaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityType Name="UserComplaint">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,6 +48,7 @@
           <Property Name="WorkkardId" Type="Int64" Nullable="false" />
           <Property Name="ActivityId" Type="Int64" Nullable="false" />
           <Property Name="creatorId" Type="Int64" Nullable="false" />
+          <Property Name="IsActivityClosedByOwner" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="cc_web_aaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserComplaints" EntityType="Self.UserComplaint" />
@@ -55,17 +57,12 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="cc_web_aaModelStoreContainer" CdmEntityContainer="cc_web_aaEntities">
           <EntitySetMapping Name="UserComplaints">
             <EntityTypeMapping TypeName="cc_web_aaModel.UserComplaint">
               <MappingFragment StoreEntitySet="UserComplaints">
-                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="WorkkardId" ColumnName="WorkkardId" />
-                <ScalarProperty Name="IsPublicComplaint" ColumnName="IsPublicComplaint" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="IsActivityClosedByOwner" ColumnName="IsActivityClosedByOwner" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
@@ -73,6 +70,12 @@
                 <ScalarProperty Name="Domain" ColumnName="Domain" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="IsPublicComplaint" ColumnName="IsPublicComplaint" />
+                <ScalarProperty Name="WorkkardId" ColumnName="WorkkardId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="creatorId" ColumnName="creatorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -81,7 +84,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

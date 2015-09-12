@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityType Name="UserComplaints">
     <Key>
       <PropertyRef Name="Id" />
@@ -17,6 +17,7 @@
     <Property Name="WorkkardId" Type="bigint" Nullable="false" />
     <Property Name="ActivityId" Type="bigint" Nullable="false" />
     <Property Name="creatorId" Type="bigint" Nullable="false" />
+    <Property Name="IsActivityClosedByOwner" Type="bit" />
   </EntityType>
   <EntityContainer Name="cc_web_aaModelStoreContainer">
     <EntitySet Name="UserComplaints" EntityType="Self.UserComplaints" Schema="aagarwal" store:Type="Tables" />
