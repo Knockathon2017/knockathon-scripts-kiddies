@@ -36,15 +36,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     private String mDomainName;
     private ProgressDialog mDialog;
 
-<<<<<<< HEAD
-    public ComplaintListAdapter(List<Results> complainList, Context context) {
-        if (complainList == null) {
-            mComplainList = new ArrayList<>();
-        } else {
-            mComplainList = complainList;
-        }
-        mContext = context;
-=======
+
     public ComplaintListAdapter(List<Results> complainList, Context context, String domainName){
         if(complainList==null){
             mComplainList=new ArrayList<>();
@@ -54,7 +46,6 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         mDomainName=domainName;
         mContext=context;
         mDialog=new ProgressDialog(mContext);
->>>>>>> added services for activities
     }
 
     public void updateList(ArrayList<Results> results) {
