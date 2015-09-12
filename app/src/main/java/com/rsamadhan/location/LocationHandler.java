@@ -33,14 +33,19 @@ public class LocationHandler {
         return sInstance;
     }
 
+    @SuppressWarnings("ResourceType")
     public Location getUpdatedLocation() {
+        if(mUpdatedLocation==null){
+            mUpdatedLocation=mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
         return mUpdatedLocation;
     }
 
     @SuppressWarnings("ResourceType")
     public void registerLocation() {
-        LocationManager manager = (LocationManager) sContext.getSystemService(Context.LOCATION_SERVICE);
-        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 100f, new RLocationListener(mLocationListener, sContext));
+        mLocationManager = (LocationManager) sContext.getSystemService(Context.LOCATION_SERVICE);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 100f, new RLocationListener(mLocationListener, sContext));
+
     }
 
 

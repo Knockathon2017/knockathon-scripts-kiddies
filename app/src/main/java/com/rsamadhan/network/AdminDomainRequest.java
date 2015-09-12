@@ -3,14 +3,10 @@ package com.rsamadhan.network;
 /**
  * Created by Anurag Singh on 12/9/15 9:52 AM.
  */
-public class AdminDomainRequet {
+public class AdminDomainRequest extends ComplaintRequest{
 
-    private String UserId;
-    private String MobileNumber;
-    private String ComplaintContent;
     private String Domain = "admin";
-    private String Latitude;
-    private String Longitude;
+
     private boolean IsPublicComplaint = true;
 
     public String getUserId() {

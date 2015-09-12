@@ -3,14 +3,10 @@ package com.rsamadhan.network;
 /**
  * Created by Anurag Singh on 12/9/15 9:52 AM.
  */
-public class CrimeDomainRequet {
+public class CrimeDomainRequest extends ComplaintRequest{
 
-    private String UserId;
-    private String MobileNumber;
-    private String ComplaintContent;
+
     private String Domain = "crime";
-    private String Latitude;
-    private String Longitude;
     private boolean IsPublicComplaint = false;
 
     public String getUserId() {

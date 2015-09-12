@@ -9,7 +9,6 @@ public  abstract  class NetworkRequestInterceptor implements RequestInterceptor 
     @Override
     public void intercept(RequestFacade request) {
         //commom headers add here
-        request.addHeader("Content-type","application/json");
         addHeaders(request);
     }
     protected abstract void addHeaders(RequestFacade request);

@@ -1,5 +1,11 @@
 package com.rsamadhan.network;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit.RestAdapter;
+import retrofit.http.Field;
+
 /**
  * Created by prathmeshs on 07-09-2015.
  */
@@ -10,20 +16,19 @@ public class NetworkApi {
     public NetworkApi(){
         mRequest =new NetworkRequest();
     }
-   /* public void fetchLogin(Object data, Callback callback){
-            NetworkRequestInterceptor requestInterceptor=new NetworkRequestInterceptor() {
-                @Override
-                protected void addHeaders(RequestFacade request) {
-                    //Add Additional headers here
-                    request.addHeader(NetworkConstants.DEVICE_ID,"empty");
-                }
-            };
-            RestAdapter adapter= mRequest.getRestAdapter(requestInterceptor);
-            NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
-            service.getLogin(data,callback);
-    }*/
-    public void uploadUserVoice(){
 
+    public void registerComplaint(EducationDomainRequest request, ComplaintCallback callback){
+
+
+        NetworkRequestInterceptor requestInterceptor=new NetworkRequestInterceptor() {
+            @Override
+            protected void addHeaders(RequestFacade request) {
+
+            }
+        };
+        RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
+        NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
+        service.createComplaint(request.getMobileNumber(),request.getDomain(),request.getComplaintContent(),request.getLatitude(),request.getLongitude(),request.getUserId(),request.getIsPublicComplaint(),callback);
     }
 
 }
