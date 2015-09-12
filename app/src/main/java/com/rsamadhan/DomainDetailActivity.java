@@ -50,7 +50,7 @@ public class DomainDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
-/*implements View.OnClickListener {
+
     private FloatingActionButton mSpeakButton;
 
     private String mCrimeDomain="crime";
@@ -155,5 +155,5 @@ public class DomainDetailActivity extends AppCompatActivity {
         // Create and show the dialog.
         SpeechFragment newFragment = new SpeechFragment();
         newFragment.show(ft, "dialog");
-    }*/
+    }
 }
