@@ -66,5 +66,6 @@
     <string name="enter_comment_text">पाठ यहां लिखें</string>
     <string name="post_comment">टिप्पणी</string>
     <string name="prog_comment_txt">अपनी टिप्पणी पोस्ट</string>
+    <string name="fetching_all_comment">सभी टिप्पणियां लाया जा रहा</string>
 
 </resources>

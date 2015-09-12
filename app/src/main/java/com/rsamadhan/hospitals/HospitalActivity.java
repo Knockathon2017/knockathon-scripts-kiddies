@@ -68,10 +68,10 @@ public class HospitalActivity extends AppCompatActivity {
         commentList.add("Second Comment");
         commentList.add("Third Comment");*/
 
-        mRecyclerListAdapter =new CommentsListAdapter(commentList,this);
+       /* mRecyclerListAdapter =new CommentsListAdapter(commentList,this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         mCommentsListView.setLayoutManager(layoutManager);
-        mCommentsListView.setAdapter(mRecyclerListAdapter);
+        mCommentsListView.setAdapter(mRecyclerListAdapter);*/
 
     }
 }

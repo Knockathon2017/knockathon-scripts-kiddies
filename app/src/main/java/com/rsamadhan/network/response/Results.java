@@ -8,6 +8,7 @@ public class Results {
     String activity_id;
     String activity_title;
     String activity_description;
+    String description;
     String created_date;
     private String status;
 
@@ -48,5 +49,12 @@ public class Results {
     }
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -88,7 +88,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         carViewHolder.cardDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchCommentsPage(carViewHolder.cardDetails.getText().toString());
+                launchCommentsPage(carViewHolder.cardDetails.getText().toString(),mComplainList.get(position).getActivity_id(),mDomainName);
             }
         });
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
@@ -153,10 +153,12 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         mDialog.dismiss();
     }
 
-    private void launchCommentsPage(String v) {
+    private void launchCommentsPage(String v,String s,String domain) {
 
         Intent intent = new Intent(mContext, CommentsActivity.class);
         intent.putExtra(CommentsActivity.COMMENT_HEAD, v);
+        intent.putExtra(CommentsActivity.ACTIVITY_ID,s);
+        intent.putExtra(CommentsActivity.DOMAIN,domain);
         mContext.startActivity(intent);
     }
 

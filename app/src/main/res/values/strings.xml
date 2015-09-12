@@ -75,4 +75,5 @@
     <string name="prog_comment_txt">Posting Your Comment</string>
     <string name="enter_comment_name">Enter Name</string>
     <string name="enter_comment_text">Enter Text here</string>
+    <string name="fetching_all_comment">fetching all comments</string>
 </resources>

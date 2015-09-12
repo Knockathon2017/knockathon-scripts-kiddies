@@ -1,5 +1,6 @@
 package com.rsamadhan.network;
 
+import com.rsamadhan.network.callbackrequest.CommentListCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
 import com.rsamadhan.network.callbackrequest.PostCommentCallback;
@@ -45,12 +46,6 @@ public class NetworkRequest {
         public static int FORGOT_PASS_SERVICE=101;
     }
     public interface RestAPIInterface {
-     /*   @POST("/offline/login")
-        public void getLogin(@Body Object data, Callback callback);
-*/
-       /* @Multipart
-        @PUT("/user/photo")
-        Call<User> updateUser(@Part("file") RequestBody photo, @Part("description") RequestBody description);*/
 
         @FormUrlEncoded
         @POST("/CreateComplain")
@@ -70,6 +65,9 @@ public class NetworkRequest {
         @POST("/ActivityAddNote")
         public void postNewComment(@Field("ActivityId") String activityId, @Field("Description") String description, @Field("Domain") String domain,PostCommentCallback callback);
 
+
+        @GET("/activityNotes/{id}/{domain}")
+        public void getListOfComments(@Path("id") String activityId,@Path("domain") String domain,CommentListCallback callback);
 
     }
 }

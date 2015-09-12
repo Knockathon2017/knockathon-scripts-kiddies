@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rsamadhan.R;
+import com.rsamadhan.network.response.Results;
 
 import java.util.List;
 
@@ -17,10 +18,10 @@ import java.util.List;
  */
 public class CommentsListAdapter extends RecyclerView.Adapter {
 
-    private List<String> mCommentList;
+    private List<Results> mCommentList;
     private Context mContext;
 
-    public CommentsListAdapter(List<String> commentList,Context context){
+    public CommentsListAdapter(List<Results> commentList,Context context){
         mCommentList=commentList;
         mContext=context;
     }
@@ -49,7 +50,7 @@ public class CommentsListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CarViewHolder carViewHolder= (CarViewHolder) holder;
-        carViewHolder.commentView.setText(mCommentList.get(position));
+        carViewHolder.commentView.setText(mCommentList.get(position).getDescription());
     }
 
     @Override
