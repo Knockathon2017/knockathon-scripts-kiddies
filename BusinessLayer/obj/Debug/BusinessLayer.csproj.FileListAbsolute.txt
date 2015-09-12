@@ -1,0 +1,8 @@
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\bin\Debug\RSamadhanEntityFrameWork.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\bin\Debug\EntityFramework.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\bin\Debug\RSamadhanEntityFrameWork.pdb
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\RSamadhan\BusinessLayer\obj\Debug\BusinessLayer.pdb
