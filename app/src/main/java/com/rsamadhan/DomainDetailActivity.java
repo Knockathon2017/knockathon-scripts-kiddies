@@ -63,10 +63,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_detail);
 
         mRecyclerView= (RecyclerView) findViewById(R.id.rv_complaint_list);
-        mLayoutManager=new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapterView= new ComplaintListAdapter(null,this);
-        mRecyclerView.setAdapter(mAdapterView);
+
 
         mSpeakButton= (FloatingActionButton) findViewById(R.id.floating_ac_btn);
         mSpeakButton.setOnClickListener(this);
@@ -85,16 +82,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
 
         loadBackdrop(cheeseIndex);
 
-        String domVal=mEducation;
-        if(domainName.contains(mCrimeDomain)){
-                  domVal=mCrimeDomain;
-        }else if(domainName.contains(mAdminDomain)){
 
-            domVal=mAdminDomain;
-        }else if(domainName.contains(mEducation)){
-            domVal=mEducation;
-        }
-        lanuchComplaintListService(domVal);
     }
 
     private void lanuchComplaintListService(String domVal) {
@@ -119,6 +107,23 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     protected void onResume() {
         super.onResume();
 
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapterView= new ComplaintListAdapter(null,this);
+        mRecyclerView.setAdapter(mAdapterView);
+
+        final String domainName = getIntent().getStringExtra(EXTRA_NAME);
+
+        String domVal=mEducation;
+        if(domainName.contains(mCrimeDomain)){
+            domVal=mCrimeDomain;
+        }else if(domainName.contains(mAdminDomain)){
+
+            domVal=mAdminDomain;
+        }else if(domainName.contains(mEducation)){
+            domVal=mEducation;
+        }
+        lanuchComplaintListService(domVal);
     }
 
     private void loadBackdrop(int index) {
