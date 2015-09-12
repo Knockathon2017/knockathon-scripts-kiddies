@@ -3,6 +3,7 @@ package com.rsamadhan;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import android.os.Build;
@@ -41,12 +42,14 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mMobileNumberView;
     private View mProgressView;
     private View mLoginFormView;
+    private PreferenceManager mPrefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mPrefs=PreferenceManager.getInstance(this);
         mMobileNumberView = (EditText) findViewById(R.id.mobile_number);
         mMobileNumberView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -90,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         View focusView = null;
 
         // Check for a valid mobileNumber, if the user entered one.
-        if (!TextUtils.isEmpty(mobileNumber) && !isPhoneNumberValid(mobileNumber)) {
+        if (TextUtils.isEmpty(mobileNumber) || !isPhoneNumberValid(mobileNumber)) {
             mMobileNumberView.setError(getString(R.string.error_invalid_password));
             focusView = mMobileNumberView;
             cancel = true;
@@ -111,9 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isPhoneNumberValid(String password) {
         //TODO: Replace this with your own logic
-
-        Matcher matcher = Patterns.PHONE.matcher(password);
-        return matcher.matches();
+        return (password.length() > 9 && password.length() <= 10);
     }
 
     /**
@@ -175,16 +176,11 @@ public class LoginActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 return false;
             }
-
-           /* for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mMobileNumber);
-                }
-            }*/
-
             // TODO: register the new account here.
+
+            mPrefs.putLoginID(mMobileNumber);
+
+
             return true;
         }
 
@@ -194,6 +190,8 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             } else {
                 mMobileNumberView.setError(getString(R.string.error_invalid_password));

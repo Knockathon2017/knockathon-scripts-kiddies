@@ -39,7 +39,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
+            android:configChanges="locale"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
 

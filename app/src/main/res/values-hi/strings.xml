@@ -52,4 +52,12 @@
     <string name="yes_txt">जीपीएस सक्षम करें</string>
     <string name="no_txt">रद्द करें</string>
     <string name="nav_stats">अपराध सांख्यिकी</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_mobilenumber">ओटीपी के लिए मोबाइल नंबर</string>
+    <string name="action_sign_in">नामांकित करें या दर्ज करें</string>
+    <string name="action_sign_in_short">साइन इन करें</string>
+
+    <string name="error_invalid_password">इस मोबाइल नंबर सही नहीं है</string>
+
 </resources>

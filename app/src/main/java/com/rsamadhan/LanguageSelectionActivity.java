@@ -49,9 +49,15 @@ public class LanguageSelectionActivity extends AppCompatActivity implements Numb
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
-                finish();
+                if(mPrefs.getLoginId().equals("-1")){
+                    Intent intent = new Intent(context, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         }, 10);
     }

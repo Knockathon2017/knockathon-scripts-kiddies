@@ -22,6 +22,8 @@ public class PreferenceManager {
     private final String PREF_LANGUAGE_SELECTED     = "PREF_LANGUAGE_SELECTED";
     private final String PREF_FIRST_TIME_LOGIN      = "PREF_FIRST_TIME_LOGIN";
 
+    private final String PREF_LOGIN_ID              = "PREF_LOGIN_ID";
+
     private SharedPreferences mPref;
 
     private PreferenceManager(Context context) {
@@ -34,10 +36,20 @@ public class PreferenceManager {
         return mPref.getBoolean(PREF_FIRST_TIME_LOGIN,true);
     }
     public void putSelectedLanguage(String language){
-        mPref.edit().putString(PREF_LANGUAGE_SELECTED,language).commit();
+        mPref.edit().putString(PREF_LANGUAGE_SELECTED, language).commit();
     }
     public String getSelectedLanguage(){
-        return mPref.getString(PREF_LANGUAGE_SELECTED,ApplicationConstants.ENGLISH_LOCALE);
+        return mPref.getString(PREF_LANGUAGE_SELECTED, ApplicationConstants.ENGLISH_LOCALE);
     }
+
+
+    public void putLoginID(String mobileNumber){
+        mPref.edit().putString(PREF_LOGIN_ID,mobileNumber).commit();
+    }
+    public String getLoginId(){
+        return mPref.getString(PREF_LOGIN_ID, "-1");
+    }
+
+
 
 }

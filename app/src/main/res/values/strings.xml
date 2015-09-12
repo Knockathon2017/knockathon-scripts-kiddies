@@ -61,4 +61,11 @@
     <string name="yes_txt">Enable GPS</string>
     <string name="no_txt">Cancel</string>
     <string name="nav_stats">Crime Statistics</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_mobilenumber">Mobile Number for OTP</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <string name="error_invalid_password">This mobile number is not correct</string>
 </resources>
