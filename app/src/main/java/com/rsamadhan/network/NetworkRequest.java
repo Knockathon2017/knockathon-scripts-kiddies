@@ -58,7 +58,6 @@ public class NetworkRequest {
                                     @Field("ComplaintContent") String complaintContent,
                                     @Field("Latitude") String lat,
                                     @Field("Longitude") String lon ,
-                                    @Field("UserId") String userId ,
                                     @Field("IsPublicComplaint") Boolean pub ,
                                     ComplaintCallback callback);
 

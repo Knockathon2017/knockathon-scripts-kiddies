@@ -144,10 +144,13 @@ public class SpeechFragment extends DialogFragment {
         request.setComplaintContent(s);
         Location location=mHandler.getUpdatedLocation();
         request.setMobileNumber(PreferenceManager.getInstance(getActivity()).getLoginId());
-        request.setLatitude(location.getLatitude() + "");
-        request.setLongitude(location.getLongitude() + "");
-        request.setUserId("0207777");
-        NetworkApi api=new NetworkApi();
+        if(location!=null){
+            request.setLatitude(location.getLatitude() + "");
+            request.setLongitude(location.getLongitude() + "");
+        }
+
+
+        NetworkApi api = new NetworkApi();
         api.registerComplaint(request, new ComplaintCallback() {
             @Override
             public void complaintSuccess(RequestResponse o) {
