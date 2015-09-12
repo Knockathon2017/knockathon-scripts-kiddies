@@ -40,6 +40,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.rsamadhan.statistics.StatActiviy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,12 +174,20 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         if (menuItem.getItemId() == R.id.nav_change_lan) {
                             navigateToLanguageChange();
+                        } else if (menuItem.getItemId() == R.id.nav_stats) {
+                            navigateToStats();
                         }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         return true;
                     }
                 });
+    }
+
+    private void navigateToStats() {
+        Intent intent=new Intent(this, StatActiviy.class);
+        startActivity(intent);
+
     }
 
     static class Adapter extends FragmentPagerAdapter {
