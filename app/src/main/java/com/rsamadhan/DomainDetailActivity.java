@@ -24,29 +24,25 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.rsamadhan.comments.CommentsActivity;
 import com.rsamadhan.network.ComplaintListAdapter;
 import com.rsamadhan.network.ComplaintListData;
 import com.rsamadhan.network.NetworkApi;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
 import com.rsamadhan.speech.SpeechFragment;
 
-import org.w3c.dom.Text;
-
 import retrofit.RetrofitError;
 
 
 public class DomainDetailActivity extends AppCompatActivity implements View.OnClickListener{
+
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
@@ -58,6 +54,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     private String mEducation="edu";
 
     private RecyclerView mRecyclerView;
+    private ComplaintListAdapter mAdapterView;
 
     private RecyclerView.LayoutManager mLayoutManager;
     @Override
@@ -67,6 +64,9 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
 
         mRecyclerView= (RecyclerView) findViewById(R.id.rv_complaint_list);
         mLayoutManager=new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapterView= new ComplaintListAdapter(null,this);
+        mRecyclerView.setAdapter(mAdapterView);
 
         mSpeakButton= (FloatingActionButton) findViewById(R.id.floating_ac_btn);
         mSpeakButton.setOnClickListener(this);
@@ -103,16 +103,16 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         api.getComplaintList(new ComplaintListCallback() {
             @Override
             public void complaintListSuccess(ComplaintListData complaintListData) {
-                mRecyclerView.setLayoutManager(mLayoutManager);
-                ComplaintListAdapter adapter= new ComplaintListAdapter(complaintListData.getResults(),context);
-                mRecyclerView.setAdapter(adapter);
+
+               mAdapterView.updateList(complaintListData.getResults());
+               mAdapterView.notifyDataSetChanged();
             }
 
             @Override
             public void complaintListError(RetrofitError error) {
 
             }
-        },"2302432",PreferenceManager.getInstance(this).getLoginId(),domVal);
+        },"",PreferenceManager.getInstance(this).getLoginId(),domVal);
     }
 
     @Override

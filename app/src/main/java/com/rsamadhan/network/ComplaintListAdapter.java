@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.rsamadhan.R;
 import com.rsamadhan.comments.CommentsActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +25,18 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     private Context mContext;
 
     public ComplaintListAdapter(List<Results> complainList,Context context){
-        mComplainList =complainList;
+        if(complainList==null){
+            mComplainList=new ArrayList<>();
+        }else{
+            mComplainList =complainList;
+        }
         mContext=context;
+    }
+
+    public void updateList(ArrayList<Results> results) {
+        if(results!=null){
+            mComplainList=results;
+        }
     }
 
     public class CarViewHolder extends RecyclerView.ViewHolder{
