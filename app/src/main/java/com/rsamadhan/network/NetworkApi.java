@@ -1,10 +1,8 @@
 package com.rsamadhan.network;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 
 import retrofit.RestAdapter;
-import retrofit.http.Field;
 
 /**
  * Created by prathmeshs on 07-09-2015.

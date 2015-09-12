@@ -1,4 +1,6 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.callbackrequest;
+
+import com.rsamadhan.network.RequestResponse;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;

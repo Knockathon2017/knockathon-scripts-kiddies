@@ -6,7 +6,6 @@ import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
@@ -23,7 +22,7 @@ import com.rsamadhan.PreferenceManager;
 import com.rsamadhan.R;
 import com.rsamadhan.common.ApplicationUtils;
 import com.rsamadhan.location.LocationHandler;
-import com.rsamadhan.network.ComplaintCallback;
+import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.EducationDomainRequest;
 import com.rsamadhan.network.NetworkApi;
 import com.rsamadhan.network.RequestResponse;
@@ -31,9 +30,7 @@ import com.rsamadhan.network.RequestResponse;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import retrofit.Callback;
 import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by prathmeshs on 12-09-2015.
@@ -146,20 +143,22 @@ public class SpeechFragment extends DialogFragment {
         EducationDomainRequest request =new EducationDomainRequest();
         request.setComplaintContent(s);
         Location location=mHandler.getUpdatedLocation();
+        request.setMobileNumber(PreferenceManager.getInstance(getActivity()).getLoginId());
         request.setLatitude(location.getLatitude() + "");
         request.setLongitude(location.getLongitude() + "");
-        request.setUserId("020320302");
+        request.setUserId("0207777");
         NetworkApi api=new NetworkApi();
         api.registerComplaint(request, new ComplaintCallback() {
             @Override
             public void complaintSuccess(RequestResponse o) {
                 dismiss();
-               Toast.makeText(getActivity(),o.getResult(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void complaintFail(RetrofitError error) {
                 dismiss();
-                Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "fail", Toast.LENGTH_LONG).show();
             }
         });
 

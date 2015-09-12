@@ -1,15 +1,18 @@
 package com.rsamadhan.network;
 
-import java.util.Map;
+import com.rsamadhan.network.callbackrequest.ComplaintCallback;
+import com.squareup.okhttp.OkHttpClient;
 
-import retrofit.Callback;
+import java.util.concurrent.TimeUnit;
+
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
-import retrofit.http.Body;
+import retrofit.client.OkClient;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
+import retrofit.http.GET;
 import retrofit.http.POST;
-import retrofit.http.QueryMap;
+import retrofit.http.Path;
 
 /**
  * Created by prathmeshs on 03-09-2015.
@@ -21,9 +24,15 @@ public class NetworkRequest {
     public NetworkRequest() {}
 
     private RestAdapter createAdapter(RequestInterceptor requestInterceptor) {
+        final OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.setReadTimeout(60, TimeUnit.SECONDS);
+        okHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);
+
+
         return new RestAdapter.Builder()
                 .setEndpoint(NetworkConstants.BASE_URL)
                 .setRequestInterceptor(requestInterceptor)
+                .setClient(new OkClient(okHttpClient))
                 .build();
     }
     public RestAdapter getRestAdapter(RequestInterceptor requestInterceptor){
@@ -51,5 +60,8 @@ public class NetworkRequest {
                                     @Field("UserId") String userId ,
                                     @Field("IsPublicComplaint") Boolean pub ,
                                     ComplaintCallback callback);
+
+        @GET("/AllWorkkardActivities/{UserId}/{MobileNumber}/{Domain}")
+        public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain);
     }
 }
