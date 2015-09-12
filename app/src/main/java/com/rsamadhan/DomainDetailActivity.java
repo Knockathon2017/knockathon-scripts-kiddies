@@ -18,6 +18,7 @@ package com.rsamadhan;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,6 +57,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
 
     private RecyclerView mRecyclerView;
     private ComplaintListAdapter mAdapterView;
+    private ProgressDialog mDialog;
 
     private RecyclerView.LayoutManager mLayoutManager;
     @Override
@@ -63,6 +65,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        mDialog=new ProgressDialog(this);
         mRecyclerView= (RecyclerView) findViewById(R.id.rv_complaint_list);
 
 
@@ -89,19 +92,30 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     private void lanuchComplaintListService(String domVal) {
         NetworkApi api=new NetworkApi();
         final Context context=this;
+        showProgress();
         api.getComplaintList(new ComplaintListCallback() {
             @Override
             public void complaintListSuccess(ComplaintListData complaintListData) {
 
-               mAdapterView.updateList(complaintListData.getResults());
-               mAdapterView.notifyDataSetChanged();
+                mAdapterView.updateList(complaintListData.getResults());
+                mAdapterView.notifyDataSetChanged();
+                hideProgress();
             }
 
             @Override
             public void complaintListError(RetrofitError error) {
-
+                hideProgress();
             }
-        },"", PreferenceManager.getInstance(this).getLoginId(),domVal);
+        }, "", PreferenceManager.getInstance(this).getLoginId(), domVal);
+    }
+
+    private void showProgress() {
+        mDialog.setMessage(getString(R.string.prog_down_txt));
+        mDialog.show();
+    }
+
+    private void hideProgress() {
+        mDialog.dismiss();
     }
 
     @Override

@@ -70,4 +70,5 @@
     <string name="error_invalid_password">This mobile number is not correct</string>
     <string name="success_problem_submit">Success, Your Problem is submitted successfully</string>
     <string name="faile_problem_submit">Failure, There was some problem while submitted your problem</string>
+    <string name="prog_down_txt">Fetching common man\'s problems</string>
 </resources>
