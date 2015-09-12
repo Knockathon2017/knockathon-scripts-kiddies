@@ -46,7 +46,7 @@ import org.w3c.dom.Text;
 import retrofit.RetrofitError;
 
 
-public class DomainDetailActivity extends AppCompatActivity {
+public class DomainDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String EXTRA_NAME = "domain_name";
     public static final String EXTRA_INDEX = "domain_index";
