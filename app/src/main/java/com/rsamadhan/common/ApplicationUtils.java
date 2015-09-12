@@ -13,7 +13,7 @@ public class ApplicationUtils {
         Locale locale[]=Locale.getAvailableLocales();
         Locale selectedLocale;
         if(prefs.getSelectedLanguage().contains(ApplicationConstants.ENGLISH_LOCALE)){
-            selectedLocale=Locale.getDefault();
+            selectedLocale=Locale.ENGLISH;
         }else{
             selectedLocale=getHindiLocale(locale);
         }
@@ -22,7 +22,7 @@ public class ApplicationUtils {
 
     //in case hindi locale is not available then set default locale
     private static Locale getHindiLocale(Locale[] locale) {
-        Locale defaultLocale=Locale.getDefault();
+        Locale defaultLocale=Locale.ENGLISH;
         for(int i=0;i<locale.length;i++){
             if(locale[i].getLanguage().equals("hi")){
                 return locale[i];

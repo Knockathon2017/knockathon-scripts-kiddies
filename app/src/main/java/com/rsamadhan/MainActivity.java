@@ -16,6 +16,7 @@
 
 package com.rsamadhan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -94,8 +95,18 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateToLanguageChange() {
+        PreferenceManager pref=PreferenceManager.getInstance(this);
+        pref.putFirstTimeLogin(true);
+        Intent intent=new Intent(this,LanguageSelectionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -111,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        if(menuItem.getItemId()==R.id.nav_change_lan){
+                                navigateToLanguageChange();
+                        }
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         return true;

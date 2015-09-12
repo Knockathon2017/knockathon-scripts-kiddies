@@ -53,7 +53,7 @@ public class LanguageSelectionActivity extends AppCompatActivity implements Numb
                 startActivity(intent);
                 finish();
             }
-        }, 300);
+        }, 500);
     }
 
     private void setStoredLocale() {
