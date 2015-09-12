@@ -59,5 +59,7 @@
     <string name="action_sign_in_short">साइन इन करें</string>
 
     <string name="error_invalid_password">इस मोबाइल नंबर सही नहीं है</string>
+    <string name="success_problem_submit">सफलता , आपकी समस्या को सफलतापूर्वक प्रस्तुत की है</string>
+    <string name="faile_problem_submit">आपकी समस्या को प्रस्तुत करते हुए विफलता , कुछ समस्या थी</string>
 
 </resources>

@@ -68,4 +68,6 @@
     <string name="action_sign_in_short">Sign in</string>
 
     <string name="error_invalid_password">This mobile number is not correct</string>
+    <string name="success_problem_submit">Success, Your Problem is submitted successfully</string>
+    <string name="faile_problem_submit">Failure, There was some problem while submitted your problem</string>
 </resources>

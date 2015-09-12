@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class SpeechFragment extends DialogFragment {
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private LocationHandler mHandler;
+    private ProgressBar mProgressBar;
 
     public SpeechFragment(){
     }
@@ -66,6 +68,8 @@ public class SpeechFragment extends DialogFragment {
         mView=inflater.inflate(R.layout.activity_speechtotext,container);
         txtSpeechInput = (TextView) mView.findViewById(R.id.txtSpeechInput);
         btnSpeak = (ImageButton)mView.findViewById(R.id.btnSpeak);
+        mProgressBar= (ProgressBar) mView.findViewById(R.id.pb_speech_progress);
+
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
 
@@ -99,11 +103,25 @@ public class SpeechFragment extends DialogFragment {
                 getString(R.string.speech_prompt));
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+            showProgressHideText();
+
         } catch (ActivityNotFoundException a) {
             Toast.makeText(getActivity(),
                     getString(R.string.speech_not_supported),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showProgressHideText() {
+
+        mProgressBar.setVisibility(View.VISIBLE);
+        txtSpeechInput.setVisibility(View.GONE);
+    }
+    private void showText(){
+        txtSpeechInput.setVisibility(View.VISIBLE);
+    }
+    private void hideProgress(){
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -117,11 +135,15 @@ public class SpeechFragment extends DialogFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        showText();
+
         switch (requestCode) {
+
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == Activity.RESULT_OK && null != data) {
                     final ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
                     txtSpeechInput.setText(result.get(0));
 
                     new Handler().post(new Runnable() {
@@ -154,14 +176,16 @@ public class SpeechFragment extends DialogFragment {
         api.registerComplaint(request, new ComplaintCallback() {
             @Override
             public void complaintSuccess(RequestResponse o) {
+                hideProgress();
                 dismiss();
-                Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),getString(R.string.success_problem_submit), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void complaintFail(RetrofitError error) {
+                hideProgress();
                 dismiss();
-                Toast.makeText(getActivity(), "fail", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.faile_problem_submit), Toast.LENGTH_LONG).show();
             }
         });
 
