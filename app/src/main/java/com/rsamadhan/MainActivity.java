@@ -40,6 +40,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.rsamadhan.common.PreferenceManager;
 import com.rsamadhan.statistics.StatActiviy;
 
 import java.util.ArrayList;

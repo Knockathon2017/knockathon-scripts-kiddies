@@ -1,11 +1,7 @@
-package com.rsamadhan;
+package com.rsamadhan.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 /**
  * Created by Prathmesh on 12-09-2015.

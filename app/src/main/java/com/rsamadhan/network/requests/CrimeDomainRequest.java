@@ -1,4 +1,4 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.requests;
 
 /**
  * Created by Anurag Singh on 12/9/15 9:52 AM.

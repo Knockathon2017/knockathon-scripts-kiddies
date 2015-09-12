@@ -1,4 +1,6 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.response;
+
+import com.rsamadhan.network.response.Results;
 
 import java.util.ArrayList;
 

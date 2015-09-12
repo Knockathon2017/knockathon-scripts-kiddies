@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.rsamadhan.common.ApplicationUtils;
+import com.rsamadhan.common.PreferenceManager;
 import com.rsamadhan.hospitals.HospitalActivity;
 
 import java.util.ArrayList;

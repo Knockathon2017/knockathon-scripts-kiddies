@@ -1,8 +1,6 @@
 package com.rsamadhan.network.callbackrequest;
 
-import com.rsamadhan.network.ComplaintListData;
-
-import java.util.List;
+import com.rsamadhan.network.response.ComplaintListData;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;

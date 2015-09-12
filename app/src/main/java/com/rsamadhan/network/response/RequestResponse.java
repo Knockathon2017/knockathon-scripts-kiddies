@@ -1,4 +1,4 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.response;
 
 /**
  * Created by Anurag Singh on 12/9/15 10:06 AM.

@@ -18,14 +18,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.rsamadhan.PreferenceManager;
+import com.rsamadhan.common.PreferenceManager;
 import com.rsamadhan.R;
 import com.rsamadhan.common.ApplicationUtils;
 import com.rsamadhan.location.LocationHandler;
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
-import com.rsamadhan.network.EducationDomainRequest;
+import com.rsamadhan.network.requests.EducationDomainRequest;
 import com.rsamadhan.network.NetworkApi;
-import com.rsamadhan.network.RequestResponse;
+import com.rsamadhan.network.response.RequestResponse;
 
 import java.util.ArrayList;
 import java.util.Locale;

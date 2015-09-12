@@ -1,4 +1,4 @@
-package com.rsamadhan;
+package com.rsamadhan.common;
 
 import android.app.Application;
 

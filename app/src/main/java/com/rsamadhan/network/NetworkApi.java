@@ -2,6 +2,7 @@ package com.rsamadhan.network;
 
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
+import com.rsamadhan.network.requests.EducationDomainRequest;
 
 import retrofit.RestAdapter;
 

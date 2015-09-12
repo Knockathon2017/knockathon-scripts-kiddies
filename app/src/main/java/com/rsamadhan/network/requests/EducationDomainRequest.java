@@ -1,12 +1,12 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.requests;
 
 /**
  * Created by Anurag Singh on 12/9/15 9:52 AM.
  */
-public class AdminDomainRequest extends ComplaintRequest{
+public class EducationDomainRequest extends ComplaintRequest {
 
-    private String Domain = "admin";
 
+    private String Domain = "edu";
     private boolean IsPublicComplaint = true;
 
     public String getUserId() {

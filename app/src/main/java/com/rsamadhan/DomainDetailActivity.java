@@ -32,8 +32,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.rsamadhan.network.ComplaintListAdapter;
-import com.rsamadhan.network.ComplaintListData;
+import com.rsamadhan.common.PreferenceManager;
+import com.rsamadhan.complaints.ComplaintListAdapter;
+import com.rsamadhan.network.response.ComplaintListData;
 import com.rsamadhan.network.NetworkApi;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
 import com.rsamadhan.speech.SpeechFragment;
@@ -100,7 +101,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
             public void complaintListError(RetrofitError error) {
 
             }
-        },"",PreferenceManager.getInstance(this).getLoginId(),domVal);
+        },"", PreferenceManager.getInstance(this).getLoginId(),domVal);
     }
 
     @Override

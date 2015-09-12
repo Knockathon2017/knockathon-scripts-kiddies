@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
+import com.rsamadhan.common.ApplicationConstants;
 import com.rsamadhan.common.ApplicationUtils;
+import com.rsamadhan.common.PreferenceManager;
 
 import java.util.Locale;
 
@@ -81,7 +82,7 @@ public class LanguageSelectionActivity extends AppCompatActivity implements Numb
         switch (id){
             case R.id.btn_select_lan:
 
-                if(mLanguageIndex==ApplicationConstants.ENGLISH_IND){
+                if(mLanguageIndex== ApplicationConstants.ENGLISH_IND){
                     mPrefs.putSelectedLanguage(ApplicationConstants.ENGLISH_LOCALE);
                 }else{
                     mPrefs.putSelectedLanguage(ApplicationConstants.HINDI_LOCALE);

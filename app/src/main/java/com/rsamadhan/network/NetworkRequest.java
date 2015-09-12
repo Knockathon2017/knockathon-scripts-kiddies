@@ -64,5 +64,8 @@ public class NetworkRequest {
         @GET("/AllWorkkardActivities/{UserId}/{MobileNumber}/{Domain}")
         public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain,
                                         ComplaintListCallback callback);
+
+
+
     }
 }

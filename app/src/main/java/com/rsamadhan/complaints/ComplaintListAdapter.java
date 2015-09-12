@@ -1,9 +1,8 @@
-package com.rsamadhan.network;
+package com.rsamadhan.complaints;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.rsamadhan.R;
 import com.rsamadhan.comments.CommentsActivity;
+import com.rsamadhan.network.response.Results;
 
 import java.util.ArrayList;
 import java.util.List;

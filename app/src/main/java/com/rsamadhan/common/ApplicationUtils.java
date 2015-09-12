@@ -1,8 +1,5 @@
 package com.rsamadhan.common;
 
-import com.rsamadhan.ApplicationConstants;
-import com.rsamadhan.PreferenceManager;
-
 import java.util.Locale;
 
 /**

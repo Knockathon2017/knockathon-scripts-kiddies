@@ -1,4 +1,4 @@
-package com.rsamadhan.network;
+package com.rsamadhan.network.requests;
 
 /**
  * Created by Prathmesh on 12-09-2015.
