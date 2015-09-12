@@ -49,7 +49,7 @@
         <item>जल स्रोत</item>
     </array>
     <string name="enable_gps">इस एप्लिकेशन को आपके स्थान का उपयोग करने की जरूरत है। अपने जीपीएस पर स्विच करें।</string>
-    <string name="yes_txt">जीपीएस सक्षम करें</string>
+    <string name="enable_gps_txt">जीपीएस सक्षम करें</string>
     <string name="no_txt">रद्द करें</string>
     <string name="nav_stats">अपराध सांख्यिकी</string>
 
@@ -62,5 +62,9 @@
     <string name="success_problem_submit">सफलता , आपकी समस्या को सफलतापूर्वक प्रस्तुत की है</string>
     <string name="faile_problem_submit">आपकी समस्या को प्रस्तुत करते हुए विफलता , कुछ समस्या थी</string>
     <string name="prog_down_txt">आम आदमी की समस्याओं को ला रहा है</string>
+    <string name="enter_comment_name">नाम दर्ज</string>
+    <string name="enter_comment_text">पाठ यहां लिखें</string>
+    <string name="post_comment">टिप्पणी</string>
+    <string name="prog_comment_txt">अपनी टिप्पणी पोस्ट</string>
 
 </resources>

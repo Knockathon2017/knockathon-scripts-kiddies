@@ -121,13 +121,11 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onResume() {
         super.onResume();
-
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mAdapterView= new ComplaintListAdapter(null,this);
-        mRecyclerView.setAdapter(mAdapterView);
-
         final String domainName = getIntent().getStringExtra(EXTRA_NAME);
+
+
+
+
 
         String domVal=mEducation;
         if(domainName.contains(mCrimeDomain)){
@@ -138,6 +136,10 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         }else if(domainName.contains(mEducation)){
             domVal=mEducation;
         }
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapterView= new ComplaintListAdapter(null,this,domVal);
+        mRecyclerView.setAdapter(mAdapterView);
         lanuchComplaintListService(domVal);
     }
 

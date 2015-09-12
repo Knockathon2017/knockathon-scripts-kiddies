@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     private void showGPSDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setMessage(R.string.enable_gps).setPositiveButton(R.string.yes_txt, new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.enable_gps).setPositiveButton(R.string.enable_gps_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);

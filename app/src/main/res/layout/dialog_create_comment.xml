@@ -6,17 +6,17 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter Name"
-        android:id="@+id/textView" />
+        android:hint="@string/enter_comment_name"
+        android:id="@+id/editTextName" />
 
     <EditText
-        android:id="@+id/edittext"
+        android:id="@+id/edittextComment"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter text here.."
+        android:hint="@string/enter_comment_text"
         android:padding="10dp" />
 </LinearLayout>

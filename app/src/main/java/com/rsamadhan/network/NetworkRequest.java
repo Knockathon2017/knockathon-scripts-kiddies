@@ -2,6 +2,7 @@ package com.rsamadhan.network;
 
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
+import com.rsamadhan.network.callbackrequest.PostCommentCallback;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
@@ -65,6 +66,9 @@ public class NetworkRequest {
         public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain,
                                         ComplaintListCallback callback);
 
+        @FormUrlEncoded
+        @POST("/ActivityAddNote")
+        public void postNewComment(@Field("ActivityId") String activityId, @Field("Description") String description, @Field("Domain") String domain,PostCommentCallback callback);
 
 
     }

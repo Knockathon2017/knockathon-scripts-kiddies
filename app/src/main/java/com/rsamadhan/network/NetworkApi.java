@@ -2,6 +2,7 @@ package com.rsamadhan.network;
 
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
+import com.rsamadhan.network.callbackrequest.PostCommentCallback;
 import com.rsamadhan.network.requests.EducationDomainRequest;
 
 import retrofit.RestAdapter;
@@ -40,7 +41,19 @@ public class NetworkApi {
         };
         RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
         NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
-        service.getListOfComplaints(requestparams[0],requestparams[1],requestparams[2],callback);
+        service.getListOfComplaints(requestparams[0], requestparams[1], requestparams[2], callback);
+    }
+
+    public void postNewComment(PostCommentCallback callback,String ...serviceParams){
+        NetworkRequestInterceptor requestInterceptor=new NetworkRequestInterceptor() {
+            @Override
+            protected void addHeaders(RequestFacade request) {
+
+            }
+        };
+        RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
+        NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
+        service.postNewComment(serviceParams[0],serviceParams[1], serviceParams[2],callback);
     }
 
 }

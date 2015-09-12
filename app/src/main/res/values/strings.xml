@@ -58,7 +58,8 @@
     </array>
 
     <string name="enable_gps">This application needs to access your location. Please switch on your gps.</string>
-    <string name="yes_txt">Enable GPS</string>
+    <string name="enable_gps_txt">Enable GPS</string>
+    <string name="post_comment">Post Comment</string>
     <string name="no_txt">Cancel</string>
     <string name="nav_stats">Crime Statistics</string>
 
@@ -71,4 +72,7 @@
     <string name="success_problem_submit">Success, Your Problem is submitted successfully</string>
     <string name="faile_problem_submit">Failure, There was some problem while submitted your problem</string>
     <string name="prog_down_txt">Fetching common man\'s problems</string>
+    <string name="prog_comment_txt">Posting Your Comment</string>
+    <string name="enter_comment_name">Enter Name</string>
+    <string name="enter_comment_text">Enter Text here</string>
 </resources>
