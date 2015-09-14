@@ -29,6 +29,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -55,9 +56,16 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     private String mAdminDomain="admin";
     private String mEducation="edu";
 
+    private String mDomainName;
+    private int mItemIndex;
+
     private RecyclerView mRecyclerView;
     private ComplaintListAdapter mAdapterView;
     private ProgressDialog mDialog;
+    private CollapsingToolbarLayout mCollapsingToolBar;
+
+    private String PUBLIC_PROBLES="public";
+    private String PERSONAL_PROBLEMS="personal";
 
     private RecyclerView.LayoutManager mLayoutManager;
     @Override
@@ -73,19 +81,16 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         mSpeakButton.setOnClickListener(this);
 
         Intent intent = getIntent();
-        final String domainName = intent.getStringExtra(EXTRA_NAME);
-        final int cheeseIndex= intent.getIntExtra(EXTRA_INDEX, 0);
+        mDomainName = intent.getStringExtra(EXTRA_NAME);
+        mItemIndex = intent.getIntExtra(EXTRA_INDEX, 0);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(domainName);
-
-        loadBackdrop(cheeseIndex);
-
+        mCollapsingToolBar =(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        loadBackdrop(mItemIndex);
+        setPersonalTitleAndLoadView();
 
     }
 
@@ -121,26 +126,6 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onResume() {
         super.onResume();
-        final String domainName = getIntent().getStringExtra(EXTRA_NAME);
-
-
-
-
-
-        String domVal=mEducation;
-        if(domainName.contains(mCrimeDomain)){
-            domVal=mCrimeDomain;
-        }else if(domainName.contains(mAdminDomain)){
-
-            domVal=mAdminDomain;
-        }else if(domainName.contains(mEducation)){
-            domVal=mEducation;
-        }
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mAdapterView= new ComplaintListAdapter(null,this,domVal);
-        mRecyclerView.setAdapter(mAdapterView);
-        lanuchComplaintListService(domVal);
     }
 
     private void loadBackdrop(int index) {
@@ -152,6 +137,47 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.sample_actions, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.per_probs:
+                setPersonalTitleAndLoadView();
+                return true;
+            case R.id.public_probs:
+                setPublicTitleAndLoadView();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setPublicTitleAndLoadView() {
+        mCollapsingToolBar.setTitle(mDomainName+"-"+getString(R.string.public_prob_title));
+        loadData(PUBLIC_PROBLES);
+    }
+
+    private void setPersonalTitleAndLoadView() {
+        mCollapsingToolBar.setTitle(mDomainName+"-"+getString(R.string.my_problems_title));
+        loadData(PERSONAL_PROBLEMS);
+    }
+
+    private void loadData(String probType) {
+        String domVal=mEducation;
+        if(mDomainName.contains(mCrimeDomain)){
+            domVal=mCrimeDomain;
+        }else if(mDomainName.contains(mAdminDomain)){
+
+            domVal=mAdminDomain;
+        }else if(mDomainName.contains(mEducation)){
+            domVal=mEducation;
+        }
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapterView= new ComplaintListAdapter(null,this,domVal);
+        mRecyclerView.setAdapter(mAdapterView);
+        lanuchComplaintListService(domVal);
     }
 
     @Override

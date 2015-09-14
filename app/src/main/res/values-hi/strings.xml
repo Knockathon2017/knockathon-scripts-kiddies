@@ -67,5 +67,7 @@
     <string name="post_comment">टिप्पणी</string>
     <string name="prog_comment_txt">अपनी टिप्पणी पोस्ट</string>
     <string name="fetching_all_comment">सभी टिप्पणियां लाया जा रहा</string>
+    <string name="my_problems_title">मेरी समस्याएं</string>
+    <string name="public_prob_title">सार्वजनिक समस्याएं</string>
 
 </resources>

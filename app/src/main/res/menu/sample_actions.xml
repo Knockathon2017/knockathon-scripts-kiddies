@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +15,15 @@
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/menu_settings"
+        android:id="@+id/public_probs"
+        android:title="@string/public_prob_title"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/per_probs"
+        android:title="@string/my_problems_title"
+        app:showAsAction="never"/>
+
 </menu>

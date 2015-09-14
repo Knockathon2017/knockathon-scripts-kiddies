@@ -76,4 +76,6 @@
     <string name="enter_comment_name">Enter Name</string>
     <string name="enter_comment_text">Enter Text here</string>
     <string name="fetching_all_comment">fetching all comments</string>
+    <string name="my_problems_title">My Problems</string>
+    <string name="public_prob_title">Public Problems</string>
 </resources>
