@@ -21,5 +21,18 @@
   </EntityType>
   <EntityContainer Name="cc_web_aaEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="UserComplaints" EntityType="Self.UserComplaint" />
+    <EntitySet Name="UserComments" EntityType="cc_web_aaModel.UserComment" />
   </EntityContainer>
+  <EntityType Name="UserComment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityId" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

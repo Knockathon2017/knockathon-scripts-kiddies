@@ -94,9 +94,9 @@ namespace Samadhan.Modules
         {
             var http = (HttpWebRequest)WebRequest.Create(new Uri(url));
             http.Accept = "application/json";
-            http.ContentType = "application/json";
-            http.Method = "PUT";
-                        
+            http.ContentType = "application/json";            
+            http.Method = "PUT";            
+
             http.Headers[HttpRequestHeader.Authorization] = WebConfigurationManager.AppSettings[key];
 
             var response = http.GetResponse();

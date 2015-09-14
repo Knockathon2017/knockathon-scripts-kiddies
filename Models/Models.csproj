@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\lib\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,7 +48,14 @@
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseResult.cs" />
+    <Compile Include="UserActivityDetail.cs" />
     <Compile Include="Workkard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RSamadhanEntityFrameWork\RSamadhanEntityFrameWork.csproj">
+      <Project>{1cf790d9-fab7-4631-995c-15a846e719c3}</Project>
+      <Name>RSamadhanEntityFrameWork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

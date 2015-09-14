@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RSamadhanEntityFrameWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,5 +32,10 @@ namespace Models
     public class ActivityCreationResponse
     {
         public long activity_id { get; set; }
+    }
+
+    public class ActivityCommentsClass
+    {
+        public List<UserComment> ActivityCommentsResult { get; set; }
     }
 }

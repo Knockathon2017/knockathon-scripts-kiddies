@@ -6,29 +6,26 @@ using System.Linq;
 using System.Web;
 using Utilities;
 using Nancy;
+using BusinessLayer;
 
 namespace Samadhan.Modules
 {
     public class NoteCreateModule : BaseModule
     {
+        UserCommentsBusinessLayer userCommentsBusinessLayer = new UserCommentsBusinessLayer();
+
         public NoteCreateModule()
         {
             Post["/ActivityAddNote"] = _ =>
                 {
+                    string userIdString = Request.Form.UserId;
+                    long? userId = userIdString != null ? long.Parse(userIdString) : (long?)null;
+                    string mobileNumber = Request.Form.MobileNumber;
                     long activityId = Request.Form.ActivityId;
                     string descriptionText = Request.Form.Description;
-                    string domain = Request.Form.Domain;
 
-                    var key = GetKeyBasedOnDomain(domain);
-
-                    var noteData = new Note()
-                    {
-                        privacy = Constants.PublicNote,
-                        description = descriptionText
-                    };
-
-                    var postContent = JsonConvert.SerializeObject(noteData);
-                    return ExzeoApiPutRequest(string.Format("{0}activity/add_note/{1}", Constants.exzeoApiBaseUrl, activityId), key, postContent);
+                    userCommentsBusinessLayer.CreateUserComment(userId, mobileNumber, descriptionText, activityId);
+                    return Response.AsJson(new ResponseResult { Result = Enums.ResponseResult.success.ToString() });
                 };
         }
     }

@@ -2,3 +2,4 @@ C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Utilities\bin\De
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Utilities\bin\Debug\Utilities.pdb
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Utilities\obj\Debug\Utilities.dll
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Utilities\obj\Debug\Utilities.pdb
+C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Utilities\obj\Debug\Utilities.csprojResolveAssemblyReference.cache

@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="UserComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActivityId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="UserComplaints">
     <Key>
       <PropertyRef Name="Id" />
@@ -20,6 +32,7 @@
     <Property Name="IsActivityClosedByOwner" Type="bit" />
   </EntityType>
   <EntityContainer Name="cc_web_aaModelStoreContainer">
+    <EntitySet Name="UserComments" EntityType="Self.UserComments" Schema="aagarwal" store:Type="Tables" />
     <EntitySet Name="UserComplaints" EntityType="Self.UserComplaints" Schema="aagarwal" store:Type="Tables" />
   </EntityContainer>
 </Schema>

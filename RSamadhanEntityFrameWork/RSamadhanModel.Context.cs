@@ -26,5 +26,6 @@ namespace RSamadhanEntityFrameWork
         }
     
         public DbSet<UserComplaint> UserComplaints { get; set; }
+        public DbSet<UserComment> UserComments { get; set; }
     }
 }

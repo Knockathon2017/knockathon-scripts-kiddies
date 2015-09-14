@@ -2,3 +2,7 @@ C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Models\bin\Debug
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Models\bin\Debug\Models.pdb
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Models\obj\Debug\Models.dll
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Models\obj\Debug\Models.pdb
+C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\adhisha\documents\visual studio 2013\Projects\Samadhan\Models\bin\Debug\EntityFramework.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\Samadhan\Models\bin\Debug\RSamadhanEntityFrameWork.dll
+C:\Users\adhisha\documents\visual studio 2013\Projects\Samadhan\Models\bin\Debug\RSamadhanEntityFrameWork.pdb

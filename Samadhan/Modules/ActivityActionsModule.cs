@@ -16,6 +16,13 @@ namespace Samadhan.Modules
                     string domain = parameter.domain;
                     return ExzeoApiPutRequest(string.Format("{0}activity/close/{1}", Constants.exzeoApiBaseUrl, activityId), GetKeyBasedOnDomain(domain));
                 };
+
+            Get["/reopenActivity/{id}/{domain}"] = parameter =>
+            {
+                long activityId = parameter.id;
+                string domain = parameter.domain;
+                return ExzeoApiPutRequest(string.Format("{0}activity/reopen/{1}", Constants.exzeoApiBaseUrl, activityId), GetKeyBasedOnDomain(domain));
+            };
         }
     }
 }

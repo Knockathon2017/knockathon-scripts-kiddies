@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="cc_web_aaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="UserComments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivityId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserComplaints">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,6 +37,7 @@
           <Property Name="IsActivityClosedByOwner" Type="bit" />
         </EntityType>
         <EntityContainer Name="cc_web_aaModelStoreContainer">
+          <EntitySet Name="UserComments" EntityType="Self.UserComments" Schema="aagarwal" store:Type="Tables" />
           <EntitySet Name="UserComplaints" EntityType="Self.UserComplaints" Schema="aagarwal" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -52,7 +65,20 @@
         </EntityType>
         <EntityContainer Name="cc_web_aaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserComplaints" EntityType="Self.UserComplaint" />
+          <EntitySet Name="UserComments" EntityType="cc_web_aaModel.UserComment" />
         </EntityContainer>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -76,6 +102,19 @@
                 <ScalarProperty Name="WorkkardId" ColumnName="WorkkardId" />
                 <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
                 <ScalarProperty Name="creatorId" ColumnName="creatorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserComments">
+            <EntityTypeMapping TypeName="cc_web_aaModel.UserComment">
+              <MappingFragment StoreEntitySet="UserComments">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

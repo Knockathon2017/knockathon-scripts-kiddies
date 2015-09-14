@@ -4,3 +4,4 @@ C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\RSamadhanEntityF
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\RSamadhanEntityFrameWork\bin\Debug\EntityFramework.dll
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\RSamadhanEntityFrameWork\obj\Debug\RSamadhanEntityFrameWork.dll
 C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\RSamadhanEntityFrameWork\obj\Debug\RSamadhanEntityFrameWork.pdb
+C:\Users\adhisha\Documents\Visual Studio 2013\Projects\Samadhan\RSamadhanEntityFrameWork\obj\Debug\RSamadhanEntityFrameWork.csprojResolveAssemblyReference.cache

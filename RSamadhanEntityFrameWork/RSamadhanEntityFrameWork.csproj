@@ -64,6 +64,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RSamadhanModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UserComment.cs">
+      <DependentUpon>RSamadhanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCommentPartialClass.cs" />
     <Compile Include="UserComplaint.cs">
       <DependentUpon>RSamadhanModel.tt</DependentUpon>
     </Compile>
@@ -75,7 +79,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="RSamadhanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

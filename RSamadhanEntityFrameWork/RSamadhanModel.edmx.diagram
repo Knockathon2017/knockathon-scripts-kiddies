@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="6f23a336ce194a10a68d3fc73d1d4cb6" Name="Diagram1">
         <EntityTypeShape EntityType="cc_web_aaModel.UserComplaint" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cc_web_aaModel.UserComment" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
