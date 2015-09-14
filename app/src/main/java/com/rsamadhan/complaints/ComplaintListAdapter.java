@@ -34,9 +34,10 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private String mDomainName;
     private ProgressDialog mDialog;
+    private String mProbType;
 
 
-    public ComplaintListAdapter(List<Results> complainList, Context context, String domainName){
+    public ComplaintListAdapter(List<Results> complainList, Context context, String domainName, String probType){
         if(complainList==null){
             mComplainList=new ArrayList<>();
         }else{
@@ -45,6 +46,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         mDomainName=domainName;
         mContext=context;
         mDialog=new ProgressDialog(mContext);
+        mProbType = probType;
     }
 
     public void updateList(ArrayList<Results> results) {
@@ -101,11 +103,25 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         });
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
         carViewHolder.cardDetails.setText(mComplainList.get(position).getActivity_description());
-        if(mComplainList.get(position).getStatus().equals("Close")){
-            carViewHolder.cardDetails.setTextColor(Color.RED);
+
+
+
+        if(mProbType.equals("personal")){
+            carViewHolder.cardHead.setVisibility(View.VISIBLE);
+            if(mComplainList.get(position).getStatus().equals("Close")){
+                carViewHolder.action.setImageResource(R.drawable.ic_lock_outline_black_24dp);
+            }else{
+                carViewHolder.action.setImageResource(R.drawable.ic_lock_open_black_24dp);
+            }
         }else{
-            carViewHolder.cardDetails.setTextColor(Color.BLUE);
+            carViewHolder.cardHead.setVisibility(View.INVISIBLE);
+            if(mComplainList.get(position).getStatus().equals("Close")){
+                carViewHolder.cardDetails.setTextColor(Color.RED);
+            }else{
+                carViewHolder.cardDetails.setTextColor(Color.BLUE);
+            }
         }
+
         carViewHolder.action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

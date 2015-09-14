@@ -175,7 +175,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         }
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapterView= new ComplaintListAdapter(null,this,domVal);
+        mAdapterView= new ComplaintListAdapter(null,this,domVal,probType);
         mRecyclerView.setAdapter(mAdapterView);
         lanuchComplaintListService(domVal);
     }
