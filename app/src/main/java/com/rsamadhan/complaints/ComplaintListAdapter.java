@@ -109,9 +109,9 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         if(mProbType.equals("personal")){
             carViewHolder.cardHead.setVisibility(View.VISIBLE);
             if(mComplainList.get(position).getStatus().equals("Close")){
-                carViewHolder.action.setImageResource(R.drawable.ic_lock_outline_black_24dp);
-            }else{
                 carViewHolder.action.setImageResource(R.drawable.ic_lock_open_black_24dp);
+            }else{
+                carViewHolder.action.setImageResource(R.drawable.ic_lock_outline_black_24dp);
             }
         }else{
             carViewHolder.cardHead.setVisibility(View.INVISIBLE);
