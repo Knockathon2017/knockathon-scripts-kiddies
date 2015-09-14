@@ -36,10 +36,15 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.rsamadhan.common.PreferenceManager;
 import com.rsamadhan.complaints.ComplaintListAdapter;
+import com.rsamadhan.network.callbackrequest.PublicComplaintListCallback;
 import com.rsamadhan.network.response.ComplaintListData;
 import com.rsamadhan.network.NetworkApi;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
+import com.rsamadhan.network.response.Results;
 import com.rsamadhan.speech.SpeechFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.RetrofitError;
 
@@ -114,6 +119,25 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         }, "", PreferenceManager.getInstance(this).getLoginId(), domVal);
     }
 
+    private void launchPublicComplaintList(String domVal){
+        NetworkApi api=new NetworkApi();
+        final Context context=this;
+        showProgress();
+        api.getPublicComplaintList(new PublicComplaintListCallback() {
+            @Override
+            public void publicCmplaintListSuccess(List<Results> resultsList) {
+                mAdapterView.updateList((ArrayList<Results>) resultsList);
+                mAdapterView.notifyDataSetChanged();
+                hideProgress();
+            }
+
+            @Override
+            public void complaintListError(RetrofitError error) {
+                hideProgress();
+            }
+        }, "", PreferenceManager.getInstance(this).getLoginId(), domVal);
+    }
+
     private void showProgress() {
         mDialog.setMessage(getString(R.string.prog_down_txt));
         mDialog.show();
@@ -177,7 +201,12 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapterView= new ComplaintListAdapter(null,this,domVal,probType);
         mRecyclerView.setAdapter(mAdapterView);
-        lanuchComplaintListService(domVal);
+        if(probType==PUBLIC_PROBLES){
+            launchPublicComplaintList(domVal);
+        }else{
+            lanuchComplaintListService(domVal);
+        }
+
     }
 
     @Override
