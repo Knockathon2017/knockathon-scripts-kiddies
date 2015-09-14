@@ -7,6 +7,9 @@ public class ActivityCommentsResult {
 
     private String MobileNumber;
     private String Comment;
+    private String UserId;
+    private String ActivityId;
+    private String CreatedDate;
 
     public String getMobileNumber() {
         return MobileNumber;
@@ -22,5 +25,29 @@ public class ActivityCommentsResult {
 
     public void setComment(String comment) {
         Comment = comment;
+    }
+
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
+    public String getActivityId() {
+        return ActivityId;
+    }
+
+    public void setActivityId(String activityId) {
+        ActivityId = activityId;
+    }
+
+    public String getCreatedDate() {
+        return CreatedDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        CreatedDate = createdDate;
     }
 }

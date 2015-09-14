@@ -20,18 +20,17 @@ public class ActivityCommentsListAdapter extends RecyclerView.Adapter {
 
     private List<ActivityCommentsResult> mActivityCommentsResults;
     private Context mContext;
-    private String mPhoneNumber;
 
     public ActivityCommentsListAdapter(List<ActivityCommentsResult> activityCommentsResults, Context context){
         mActivityCommentsResults=activityCommentsResults;
         mContext=context;
-        mPhoneNumber= PreferenceManager.getInstance(mContext).getLoginId();
-        formatPhoneNumber();
+
     }
 
-    private void formatPhoneNumber() {
-        String number=mPhoneNumber.substring(mPhoneNumber.length()-5,mPhoneNumber.length()-1);
-        mPhoneNumber="XXXXX"+number;
+    private String formatPhoneNumber(String phoneNumber) {
+        String number=phoneNumber.substring(phoneNumber.length()-5,phoneNumber.length());
+        phoneNumber="XXXXX"+number;
+        return phoneNumber;
     }
 
     public class CarViewHolder extends RecyclerView.ViewHolder{
@@ -65,8 +64,8 @@ public class ActivityCommentsListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CarViewHolder carViewHolder= (CarViewHolder) holder;
         carViewHolder.commentView.setText(mActivityCommentsResults.get(position).getComment());
-        carViewHolder.phoneView.setText(mPhoneNumber);
-     //   carViewHolder.createDate.setText(getConvertedDate(mActivityCommentsResults.get(position).));
+        carViewHolder.phoneView.setText(formatPhoneNumber(mActivityCommentsResults.get(position).getMobileNumber()));
+        carViewHolder.createDate.setText(mActivityCommentsResults.get(position).getCreatedDate());
     }
 
     @Override
