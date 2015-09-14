@@ -189,12 +189,12 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
 
     private void loadData(String probType) {
         String domVal=mEducation;
-        if(mDomainName.contains(mCrimeDomain)){
+        if(mDomainName.contains(getResources().getStringArray(R.array.images)[6])){
             domVal=mCrimeDomain;
-        }else if(mDomainName.contains(mAdminDomain)){
+        }else if(mDomainName.contains(getResources().getStringArray(R.array.images)[13])){
 
             domVal=mAdminDomain;
-        }else if(mDomainName.contains(mEducation)){
+        }else if(mDomainName.contains(getResources().getStringArray(R.array.images)[8])){
             domVal=mEducation;
         }
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
@@ -215,13 +215,23 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
 
         switch (id){
             case R.id.floating_ac_btn:
-                launchSpeakDialog();
+
+                String domVal=mEducation;
+                if(mDomainName.contains(getResources().getStringArray(R.array.images)[6])){
+                    domVal=mCrimeDomain;
+                }else if(mDomainName.contains(getResources().getStringArray(R.array.images)[13])){
+
+                    domVal=mAdminDomain;
+                }else if(mDomainName.contains(getResources().getStringArray(R.array.images)[8])){
+                    domVal=mEducation;
+                }
+                launchSpeakDialog(domVal);
                 break;
         }
     }
 
 
-    private void launchSpeakDialog() {
+    private void launchSpeakDialog(String domVal) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
@@ -230,7 +240,7 @@ public class DomainDetailActivity extends AppCompatActivity implements View.OnCl
         ft.addToBackStack(null);
 
         // Create and show the dialog.
-        SpeechFragment newFragment = new SpeechFragment();
+        SpeechFragment newFragment = new SpeechFragment(domVal);
         newFragment.show(ft, "dialog");
     }
 }

@@ -40,13 +40,15 @@ public class SpeechFragment extends DialogFragment {
 
 
     private View mView;
+    private String mDomainText;
     private TextView txtSpeechInput;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private LocationHandler mHandler;
     private ProgressBar mProgressBar;
 
-    public SpeechFragment(){
+    public SpeechFragment(String domVal){
+        mDomainText =domVal;
     }
 
     @Override
@@ -162,8 +164,11 @@ public class SpeechFragment extends DialogFragment {
 
     private void createComplaint(String s) {
 
+
+
         EducationDomainRequest request =new EducationDomainRequest();
         request.setComplaintContent(s);
+        request.setDomain(mDomainText);
         Location location=mHandler.getUpdatedLocation();
         request.setMobileNumber(PreferenceManager.getInstance(getActivity()).getLoginId());
         if(location!=null){
@@ -178,7 +183,7 @@ public class SpeechFragment extends DialogFragment {
             public void complaintSuccess(RequestResponse o) {
                 hideProgress();
                 dismiss();
-                Toast.makeText(getActivity(),getString(R.string.success_problem_submit), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.success_problem_submit), Toast.LENGTH_LONG).show();
             }
 
             @Override
