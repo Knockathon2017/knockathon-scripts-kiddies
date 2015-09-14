@@ -1,5 +1,6 @@
 package com.rsamadhan.network;
 
+import com.rsamadhan.network.callbackrequest.ActivityCommentListCallback;
 import com.rsamadhan.network.callbackrequest.CommentListCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
@@ -54,7 +55,7 @@ public class NetworkApi {
         };
         RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
         NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
-        service.postNewComment(serviceParams[0], serviceParams[1], serviceParams[2], callback);
+        service.postNewComment(serviceParams[0], serviceParams[1], serviceParams[2], serviceParams[3], callback);
     }
 
     public void getAllComments(CommentListCallback callback,String id,String domain){
@@ -66,7 +67,20 @@ public class NetworkApi {
         };
         RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
         NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
-        service.getListOfComments(id, domain,callback);
+        service.getListOfComments(id, domain, callback);
+    }
+
+
+    public void getAllActivityComments(ActivityCommentListCallback callback,String id,String domain){
+        NetworkRequestInterceptor requestInterceptor=new NetworkRequestInterceptor() {
+            @Override
+            protected void addHeaders(RequestFacade request) {
+
+            }
+        };
+        RestAdapter adapter=mRequest.getRestAdapter(requestInterceptor);
+        NetworkRequest.RestAPIInterface service=adapter.create(NetworkRequest.RestAPIInterface.class);
+        service.getActivityListOfComments(id, domain,callback);
     }
 
 }

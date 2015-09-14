@@ -9,18 +9,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rsamadhan.R;
+import com.rsamadhan.network.response.ActivityCommentsResult;
 import com.rsamadhan.network.response.Results;
 
 import java.util.List;
 
 
-public class CommentsListAdapter extends RecyclerView.Adapter {
+public class ActivityCommentsListAdapter extends RecyclerView.Adapter {
 
-    private List<Results> mCommentList;
+    private List<ActivityCommentsResult> mActivityCommentsResults;
     private Context mContext;
 
-    public CommentsListAdapter(List<Results> commentList,Context context){
-        mCommentList=commentList;
+    public ActivityCommentsListAdapter(List<ActivityCommentsResult> activityCommentsResults, Context context){
+        mActivityCommentsResults=activityCommentsResults;
         mContext=context;
     }
 
@@ -48,7 +49,7 @@ public class CommentsListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CarViewHolder carViewHolder= (CarViewHolder) holder;
-        carViewHolder.commentView.setText(mCommentList.get(position).getDescription());
+        carViewHolder.commentView.setText(mActivityCommentsResults.get(position).getComment());
     }
 
     @Override
@@ -59,6 +60,6 @@ public class CommentsListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mCommentList.size();
+        return mActivityCommentsResults.size();
     }
 }

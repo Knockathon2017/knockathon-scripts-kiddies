@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.rsamadhan.R;
 import com.rsamadhan.network.NetworkApi;
+import com.rsamadhan.network.callbackrequest.ActivityCommentListCallback;
 import com.rsamadhan.network.callbackrequest.CommentListCallback;
+import com.rsamadhan.network.response.ActivityCommentsListData;
 import com.rsamadhan.network.response.ComplaintListData;
 import com.rsamadhan.network.response.Results;
 
@@ -25,7 +27,7 @@ import retrofit.RetrofitError;
 public class CommentsActivity extends AppCompatActivity {
 
     private RecyclerView mCommentsListView;
-    private CommentsListAdapter mRecyclerListAdapter;
+    private ActivityCommentsListAdapter mRecyclerListAdapter;
     private TextView mCommentsHeadView;
     private String mActivityId;
     private String mDomain;
@@ -68,11 +70,11 @@ public class CommentsActivity extends AppCompatActivity {
         NetworkApi api=new NetworkApi();
         final Context context=this;
         showProgress();
-        api.getAllComments(new CommentListCallback() {
+        api.getAllActivityComments(new ActivityCommentListCallback() {
             @Override
-            public void commentListSuccess(ComplaintListData complaintListData) {
+            public void commentListSuccess(ActivityCommentsListData activityCommentsListData) {
 
-                mRecyclerListAdapter =new CommentsListAdapter(complaintListData.getResults(),context);
+                mRecyclerListAdapter =new ActivityCommentsListAdapter(activityCommentsListData.getActivityCommentsResult(),context);
                 RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(context);
                 mCommentsListView.setLayoutManager(layoutManager);
                 mCommentsListView.setAdapter(mRecyclerListAdapter);

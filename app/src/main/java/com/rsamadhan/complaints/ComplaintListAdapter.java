@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.rsamadhan.R;
 import com.rsamadhan.comments.CommentsActivity;
+import com.rsamadhan.common.PreferenceManager;
 import com.rsamadhan.network.NetworkApi;
 import com.rsamadhan.network.callbackrequest.PostCommentCallback;
 import com.rsamadhan.network.response.CommentResponse;
@@ -26,9 +27,7 @@ import java.util.List;
 
 import retrofit.RetrofitError;
 
-/**
- * Created by Prathmesh on 12-09-2015.
- */
+
 public class ComplaintListAdapter extends RecyclerView.Adapter {
 
     private List<Results> mComplainList;
@@ -60,10 +59,12 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         public TextView cardHead;
         public ImageView action;
         public ImageView comment;
+        public TextView tvHead;
 
 
         public CarViewHolder(View itemView) {
             super(itemView);
+            tvHead = (TextView) itemView.findViewById(R.id.tv_cv_head);
             cardDetails= (TextView) itemView.findViewById(R.id.tv_cv_detail);
             cardHead= (TextView) itemView.findViewById(R.id.tv_cv_head);
             action= (ImageView) itemView.findViewById(R.id.action);
@@ -85,6 +86,13 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         final CarViewHolder carViewHolder = (CarViewHolder) holder;
+
+        carViewHolder.tvHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchCommentsPage(carViewHolder.cardDetails.getText().toString(),mComplainList.get(position).getActivity_id(),mDomainName);
+            }
+        });
         carViewHolder.cardDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,9 +102,9 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
         carViewHolder.cardHead.setText(mComplainList.get(position).getActivity_title());
         carViewHolder.cardDetails.setText(mComplainList.get(position).getActivity_description());
         if(mComplainList.get(position).getStatus().equals("Close")){
-            carViewHolder.cardDetails.setTextColor(Color.GRAY);
+            carViewHolder.cardDetails.setTextColor(Color.RED);
         }else{
-            carViewHolder.cardDetails.setTextColor(Color.DKGRAY);
+            carViewHolder.cardDetails.setTextColor(Color.BLUE);
         }
         carViewHolder.action.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +125,7 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
 
         AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
         View dialogView=LayoutInflater.from(mContext).inflate(R.layout.dialog_create_comment, null, false);
-        EditText name= (EditText) dialogView.findViewById(R.id.editTextName);
+//        EditText name= (EditText) dialogView.findViewById(R.id.editTextName);
         final EditText comment= (EditText) dialogView.findViewById(R.id.edittextComment);
         builder.setView(dialogView).setPositiveButton(R.string.post_comment, new DialogInterface.OnClickListener() {
             @Override
@@ -133,9 +141,8 @@ public class ComplaintListAdapter extends RecyclerView.Adapter {
                     @Override
                     public void commentFail(RetrofitError error) {
                         hideProgress();
-
                     }
-                },results.getActivity_id(),desc,mDomainName);
+                },results.getActivity_id(),desc,mDomainName, PreferenceManager.getInstance(mContext).getLoginId());
             }
         }).setNegativeButton(R.string.no_txt, new DialogInterface.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.rsamadhan.network;
 
+import com.rsamadhan.network.callbackrequest.ActivityCommentListCallback;
 import com.rsamadhan.network.callbackrequest.CommentListCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintCallback;
 import com.rsamadhan.network.callbackrequest.ComplaintListCallback;
@@ -24,7 +25,8 @@ public class NetworkRequest {
 
     private RestAdapter mMainRestAdapter;
 
-    public NetworkRequest() {}
+    public NetworkRequest() {
+    }
 
     private RestAdapter createAdapter(RequestInterceptor requestInterceptor) {
         final OkHttpClient okHttpClient = new OkHttpClient();
@@ -38,36 +40,42 @@ public class NetworkRequest {
                 .setClient(new OkClient(okHttpClient))
                 .build();
     }
-    public RestAdapter getRestAdapter(RequestInterceptor requestInterceptor){
+
+    public RestAdapter getRestAdapter(RequestInterceptor requestInterceptor) {
         return createAdapter(requestInterceptor);
     }
-    public interface ServiceIdentifier{
-        public static int LOGIN_SERVICE=100;
-        public static int FORGOT_PASS_SERVICE=101;
+
+    public interface ServiceIdentifier {
+        public static int LOGIN_SERVICE = 100;
+        public static int FORGOT_PASS_SERVICE = 101;
     }
+
     public interface RestAPIInterface {
 
         @FormUrlEncoded
         @POST("/CreateComplain")
-        public void createComplaint(@Field("MobileNumber") String mobileNumber ,
-                                    @Field("Domain") String domain ,
+        public void createComplaint(@Field("MobileNumber") String mobileNumber,
+                                    @Field("Domain") String domain,
                                     @Field("ComplaintContent") String complaintContent,
                                     @Field("Latitude") String lat,
-                                    @Field("Longitude") String lon ,
-                                    @Field("IsPublicComplaint") Boolean pub ,
+                                    @Field("Longitude") String lon,
+                                    @Field("IsPublicComplaint") Boolean pub,
                                     ComplaintCallback callback);
 
         @GET("/AllWorkkardActivities/{UserId}/{MobileNumber}/{Domain}")
-        public void getListOfComplaints(@Path("UserId") String userId,@Path("MobileNumber") String mobileNumber,@Path("Domain") String domain,
+        public void getListOfComplaints(@Path("UserId") String userId, @Path("MobileNumber") String mobileNumber, @Path("Domain") String domain,
                                         ComplaintListCallback callback);
 
         @FormUrlEncoded
         @POST("/ActivityAddNote")
-        public void postNewComment(@Field("ActivityId") String activityId, @Field("Description") String description, @Field("Domain") String domain,PostCommentCallback callback);
+        public void postNewComment(@Field("ActivityId") String activityId, @Field("Description") String description, @Field("Domain") String domain, @Field("MobileNumber") String mobile, PostCommentCallback callback);
 
 
         @GET("/activityNotes/{id}/{domain}")
-        public void getListOfComments(@Path("id") String activityId,@Path("domain") String domain,CommentListCallback callback);
+        public void getListOfComments(@Path("id") String activityId, @Path("domain") String domain, CommentListCallback callback);
+
+        @GET("/activityNotes/{id}/{domain}")
+        public void getActivityListOfComments(@Path("id") String activityId, @Path("domain") String domain, ActivityCommentListCallback callback);
 
     }
 }

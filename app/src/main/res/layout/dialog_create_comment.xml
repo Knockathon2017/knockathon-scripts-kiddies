@@ -6,12 +6,12 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <EditText
+    <!--<EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:hint="@string/enter_comment_name"
-        android:id="@+id/editTextName" />
+        android:id="@+id/editTextName" />-->
 
     <EditText
         android:id="@+id/edittextComment"
