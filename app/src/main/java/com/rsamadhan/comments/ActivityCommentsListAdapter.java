@@ -65,7 +65,7 @@ public class ActivityCommentsListAdapter extends RecyclerView.Adapter {
         CarViewHolder carViewHolder= (CarViewHolder) holder;
         carViewHolder.commentView.setText(mActivityCommentsResults.get(position).getComment());
         carViewHolder.phoneView.setText(formatPhoneNumber(mActivityCommentsResults.get(position).getMobileNumber()));
-        carViewHolder.createDate.setText(mActivityCommentsResults.get(position).getCreatedDate());
+        carViewHolder.createDate.setText(mActivityCommentsResults.get(position).getCreatedDateString());
     }
 
     @Override

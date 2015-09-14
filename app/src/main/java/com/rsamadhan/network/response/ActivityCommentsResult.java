@@ -10,6 +10,7 @@ public class ActivityCommentsResult {
     private String UserId;
     private String ActivityId;
     private String CreatedDate;
+    private String CreatedDateString;
 
     public String getMobileNumber() {
         return MobileNumber;
@@ -49,5 +50,13 @@ public class ActivityCommentsResult {
 
     public void setCreatedDate(String createdDate) {
         CreatedDate = createdDate;
+    }
+
+    public String getCreatedDateString() {
+        return CreatedDateString;
+    }
+
+    public void setCreatedDateString(String createdDateString) {
+        CreatedDateString = createdDateString;
     }
 }
